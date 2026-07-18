@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment, useState } from "react";
-import { flashcards, teaching, teachingPhotos } from "@/content/site";
+import { useContent } from "@/components/LocaleProvider";
 
 // Render a paragraph string that may contain {strong}...{/strong} markup.
 function renderRich(text: string) {
@@ -47,6 +47,7 @@ function PhotoTile({
 }
 
 export function Teaching() {
+  const { flashcards, teaching, teachingPhotos } = useContent();
   const [card, setCard] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const cur = flashcards[card] ?? flashcards[0];
@@ -88,7 +89,7 @@ export function Teaching() {
             {teaching.widgetTitle}
           </div>
           <div className="mb-5 font-mono text-[12px] text-[#7d766a]">
-            Card {card + 1} of {flashcards.length}
+            {teaching.cardCounter(card + 1, flashcards.length)}
           </div>
           <div
             className="mb-[18px] cursor-pointer [perspective:1200px]"
@@ -101,19 +102,19 @@ export function Teaching() {
               {/* Front */}
               <div className="flex flex-col justify-center rounded-[12px] border border-[rgba(244,241,234,0.14)] bg-[#2a2620] p-[22px] [grid-area:1/1] sm:p-[26px]">
                 <div className="mb-[14px] font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-accent2">
-                  Prompt
+                  {teaching.prompt}
                 </div>
                 <div className="font-serif text-[20px] leading-[1.3] text-paper sm:text-[24px]">
                   {cur.front}
                 </div>
                 <div className="mt-[18px] font-mono text-[11px] text-[#7d766a]">
-                  tap to reveal →
+                  {teaching.tapToReveal}
                 </div>
               </div>
               {/* Back */}
               <div className="flex flex-col justify-center rounded-[12px] bg-accent2 p-[22px] text-ink [grid-area:1/1] [transform:rotateY(180deg)] sm:p-[26px]">
                 <div className="mb-[14px] font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-[#7a2f13]">
-                  Answer
+                  {teaching.answer}
                 </div>
                 <div className="font-serif text-[17px] leading-[1.45] sm:text-[19px]">
                   {cur.back}
@@ -126,13 +127,13 @@ export function Teaching() {
               onClick={prev}
               className="flex-1 rounded-full border border-[rgba(244,241,234,0.28)] bg-transparent p-[11px] font-display text-[13px] font-medium text-paper"
             >
-              ← Prev
+              {teaching.prev}
             </button>
             <button
               onClick={next}
               className="flex-1 rounded-full border-none bg-paper p-[11px] font-display text-[13px] font-medium text-ink"
             >
-              Next →
+              {teaching.next}
             </button>
           </div>
         </div>

@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { contact } from "@/content/site";
+import { useContent } from "@/components/LocaleProvider";
 import { track } from "@/lib/analytics";
 
 export function Contact() {
+  const { contact } = useContent();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -23,16 +24,12 @@ export function Contact() {
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        throw new Error(data.error || "Something went wrong.");
+        throw new Error(data.error || contact.errorGeneric);
       }
       track("contact_submit", {});
       setSent(true);
     } catch (err) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Something went wrong. Please try LinkedIn instead.",
-      );
+      setError(err instanceof Error ? err.message : contact.errorGeneric);
     } finally {
       setSubmitting(false);
     }
@@ -56,13 +53,17 @@ export function Contact() {
           </p>
           <div className="flex flex-col gap-3 font-mono text-[14px] text-ink2">
             <div>
-              <span className="inline-block w-20 text-faint">linkedin</span>{" "}
+              <span className="inline-block w-20 text-faint">
+                {contact.linkedinRowLabel}
+              </span>{" "}
               <a href={contact.linkedinUrl} target="_blank" rel="noopener">
                 {contact.linkedinHandle}
               </a>
             </div>
             <div>
-              <span className="inline-block w-20 text-faint">based</span>{" "}
+              <span className="inline-block w-20 text-faint">
+                {contact.basedRowLabel}
+              </span>{" "}
               {contact.based}
             </div>
           </div>
@@ -88,7 +89,7 @@ export function Contact() {
             >
               <div className="mb-[18px]">
                 <label className="mb-2 block font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-faint">
-                  Name
+                  {contact.nameLabel}
                 </label>
                 <input
                   type="text"
@@ -102,7 +103,7 @@ export function Contact() {
               </div>
               <div className="mb-[18px]">
                 <label className="mb-2 block font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-faint">
-                  Email
+                  {contact.emailLabel}
                 </label>
                 <input
                   type="email"
@@ -116,7 +117,7 @@ export function Contact() {
               </div>
               <div className="mb-[22px]">
                 <label className="mb-2 block font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-faint">
-                  Message
+                  {contact.messageLabel}
                 </label>
                 <textarea
                   required
@@ -138,11 +139,11 @@ export function Contact() {
                 disabled={submitting}
                 className="w-full rounded-full border-none bg-ink p-[15px] font-display text-[15px] font-medium text-paper disabled:opacity-60"
               >
-                {submitting ? "Sending…" : "Send message →"}
+                {submitting ? contact.sending : contact.send}
               </button>
               <div className="my-5 mb-1 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.08em] text-faint">
                 <span className="h-px flex-1 bg-[rgba(30,27,22,0.14)]" />
-                or
+                {contact.or}
                 <span className="h-px flex-1 bg-[rgba(30,27,22,0.14)]" />
               </div>
               <a
@@ -160,7 +161,7 @@ export function Contact() {
                 >
                   <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
                 </svg>
-                Connect on LinkedIn
+                {contact.connectLinkedin}
               </a>
             </form>
           )}

@@ -67,6 +67,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid messages." }, { status: 400 });
   }
 
+  // Answer in the visitor's selected language. Facts stay English in the prompt.
+  const locale = (body as { locale?: unknown })?.locale;
+  const system =
+    locale === "th"
+      ? `${aiContext}\n\nIMPORTANT: Reply in Thai (ภาษาไทย), keeping the same warm, plain, first-person voice.`
+      : aiContext;
+
   try {
     const res = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
@@ -78,7 +85,7 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({
         model: process.env.ANTHROPIC_MODEL || "claude-haiku-4-5-20251001",
         max_tokens: 400,
-        system: aiContext,
+        system,
         messages,
       }),
     });

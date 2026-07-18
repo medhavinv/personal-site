@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { approach, facets } from "@/content/site";
+import { useContent } from "@/components/LocaleProvider";
 
 export function Approach() {
+  const { approach, facets } = useContent();
   const [activeFacet, setActiveFacet] = useState(approach.defaultFacet);
   const facet = facets.find((f) => f.id === activeFacet) ?? facets[0];
 
@@ -50,7 +51,7 @@ export function Approach() {
           </p>
           <div className="border-t border-[rgba(244,241,234,0.16)] pt-[18px]">
             <div className="mb-[10px] font-mono text-[10px] font-medium uppercase leading-none tracking-[0.1em] text-accent2">
-              In practice
+              {approach.inPractice}
             </div>
             <p className="m-0 max-w-[70ch] text-[15px] leading-[1.6] text-paper">
               {facet.proof}

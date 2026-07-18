@@ -1,7 +1,10 @@
-import { footer } from "@/content/site";
+"use client";
+
+import { useContent } from "@/components/LocaleProvider";
 import { PaletteSwitcher } from "@/components/PaletteSwitcher";
 
 export function Footer() {
+  const { footer } = useContent();
   return (
     <footer className="mt-10 border-t border-hairline">
       <div className="mx-auto flex max-w-content flex-wrap items-center justify-between gap-3 px-8 py-[26px] font-mono text-[12px] text-faint">

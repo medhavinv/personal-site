@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { chat } from "@/content/site";
+import { useContent, useLocale } from "@/components/LocaleProvider";
 import { track } from "@/lib/analytics";
 
 type Message = { role: "user" | "assistant"; content: string };
 
 export function Chat() {
+  const { chat } = useContent();
+  const { locale } = useLocale();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { role: "assistant", content: chat.welcome },
@@ -16,6 +18,15 @@ export function Chat() {
   const listRef = useRef<HTMLDivElement>(null);
 
   const showSuggestions = messages.length <= 1;
+
+  // Keep the seeded welcome in sync with the language, until the user chats.
+  useEffect(() => {
+    setMessages((m) =>
+      m.length === 1 && m[0].role === "assistant"
+        ? [{ role: "assistant", content: chat.welcome }]
+        : m,
+    );
+  }, [chat.welcome]);
 
   useEffect(() => {
     // Keep the newest message in view.
@@ -40,7 +51,7 @@ export function Chat() {
       const res = await fetch("/api/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: history }),
+        body: JSON.stringify({ messages: history, locale }),
       });
       const data = await res.json().catch(() => ({}));
       const reply =
@@ -73,7 +84,7 @@ export function Chat() {
             </div>
             <button
               onClick={toggle}
-              aria-label="Close chat"
+              aria-label={chat.closeChat}
               className="cursor-pointer border-none bg-transparent px-[2px] text-[22px] leading-none text-muted"
             >
               ×
@@ -145,7 +156,7 @@ export function Chat() {
               type="submit"
               className="rounded-[10px] border-none bg-ink px-[18px] py-3 font-display text-[14px] font-medium text-paper"
             >
-              Ask
+              {chat.ask}
             </button>
           </form>
         </div>

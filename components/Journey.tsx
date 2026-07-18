@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { cities, journey } from "@/content/site";
+import { useContent } from "@/components/LocaleProvider";
 import {
   MAP_W,
   MAP_H,
@@ -12,6 +12,7 @@ import {
 } from "@/lib/worldMap";
 
 export function Journey() {
+  const { cities, journey } = useContent();
   const [activeCity, setActiveCity] = useState(journey.defaultCity);
 
   // Project each city to viewBox coordinates once.
@@ -21,7 +22,7 @@ export function Journey() {
       xy[c.id] = project(c.lng, c.lat);
     });
     return xy;
-  }, []);
+  }, [cities]);
 
   const routePts = useMemo(
     () =>
@@ -84,6 +85,13 @@ export function Journey() {
                 const isActive = activeCity === c.id;
                 const p = cityXY[c.id] ?? { x: 0, y: 0 };
                 const top = c.labelPos === "top";
+                const anchor = c.labelAnchor ?? "middle";
+                const labelX =
+                  anchor === "start"
+                    ? p.x + 14
+                    : anchor === "end"
+                      ? p.x - 14
+                      : p.x;
                 return (
                   <g
                     key={c.id}
@@ -109,9 +117,9 @@ export function Journey() {
                       style={{ transition: "all .2s" }}
                     />
                     <text
-                      x={p.x}
+                      x={labelX}
                       y={top ? p.y - 18 : p.y + 28}
-                      textAnchor="middle"
+                      textAnchor={anchor}
                       fontFamily="var(--font-jetbrains-mono), monospace"
                       fontSize={17}
                       fontWeight={isActive ? 700 : 500}

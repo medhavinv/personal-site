@@ -2,6 +2,7 @@
 
 import { PALETTES } from "@/content/site";
 import { useTheme } from "@/components/ThemeProvider";
+import { useContent } from "@/components/LocaleProvider";
 
 /**
  * Compact palette switcher. The palette is the one theming prop from the
@@ -10,10 +11,11 @@ import { useTheme } from "@/components/ThemeProvider";
  */
 export function PaletteSwitcher() {
   const { palette, setPalette } = useTheme();
+  const { themeLabel } = useContent();
 
   return (
     <label className="flex items-center gap-2">
-      <span className="uppercase tracking-[0.08em] text-faint">theme</span>
+      <span className="uppercase tracking-[0.08em] text-faint">{themeLabel}</span>
       <select
         value={palette}
         onChange={(e) => setPalette(e.target.value as (typeof PALETTES)[number])}

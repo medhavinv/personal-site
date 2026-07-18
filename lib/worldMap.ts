@@ -15,16 +15,17 @@ import { geoNaturalEarth1, geoPath, geoGraticule10 } from "d3-geo";
 import type { GeoProjection } from "d3-geo";
 import type { Topology, GeometryObject } from "topojson-specification";
 import worldData from "world-atlas/countries-110m.json";
-import { cities } from "@/content/site";
+import { cityGeo } from "@/content/site";
 
 export const MAP_W = 800;
 export const MAP_H = 520;
 
-// Inset padding around the cities. Horizontal room keeps wide labels like
-// "San Francisco" clear of the edges (which slice can crop); vertical room
-// keeps the top/bottom labels in view once the poles are cropped.
-const PAD_X = 130;
-const PAD_Y = 96;
+// Inset padding around the cities. Small padding zooms the map in as far as
+// possible; labels anchor inward (see labelAnchor in the city data) so they no
+// longer need wide margins to avoid clipping. The cities stay vertically
+// centered, so top/bottom labels remain clear of the cropped poles.
+const PAD_X = 44;
+const PAD_Y = 80;
 
 let landPath = "";
 let gratPath = "";
@@ -39,7 +40,7 @@ try {
   // Fit to the cities (zoom in) rather than the whole sphere.
   const cityBounds = {
     type: "MultiPoint" as const,
-    coordinates: cities.map((c) => [c.lng, c.lat]),
+    coordinates: cityGeo.map((c) => [c.lng, c.lat]),
   };
   projection = geoNaturalEarth1().fitExtent(
     [
