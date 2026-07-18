@@ -20,12 +20,15 @@ import { cityGeo } from "@/content/site";
 export const MAP_W = 800;
 export const MAP_H = 520;
 
-// Inset padding around the cities. Small padding zooms the map in as far as
-// possible; labels anchor inward (see labelAnchor in the city data) so they no
-// longer need wide margins to avoid clipping. The cities stay vertically
-// centered, so top/bottom labels remain clear of the cropped poles.
-const PAD_X = 44;
-const PAD_Y = 80;
+// Inset padding around the cities. The cities' bounding box is very wide
+// (San Francisco → Bangkok) and short, so the horizontal extent constrains the
+// scale: wider PAD_X zooms the whole map out and keeps the two horizontal
+// extremes (SF and Bangkok) clear of the edges. The vertical padding is
+// asymmetric — a small top pad and large bottom pad pull the cities up so the
+// land fills the top of the card instead of leaving whitespace there.
+const PAD_X = 120;
+const PAD_TOP = 55;
+const PAD_BOTTOM = 175;
 
 let landPath = "";
 let gratPath = "";
@@ -44,8 +47,8 @@ try {
   };
   projection = geoNaturalEarth1().fitExtent(
     [
-      [PAD_X, PAD_Y],
-      [MAP_W - PAD_X, MAP_H - PAD_Y],
+      [PAD_X, PAD_TOP],
+      [MAP_W - PAD_X, MAP_H - PAD_BOTTOM],
     ],
     cityBounds,
   );
