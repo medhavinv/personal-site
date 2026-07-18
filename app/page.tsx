@@ -12,7 +12,7 @@ import { Analytics } from "@/components/Analytics";
 
 export default function Home() {
   return (
-    <div className="max-w-full overflow-x-hidden">
+    <div className="max-w-full overflow-x-clip">
       <Nav />
       <main className="mx-auto max-w-content px-8">
         <Hero />
