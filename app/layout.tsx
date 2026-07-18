@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import {
-  Space_Grotesk,
-  Newsreader,
+  Bricolage_Grotesque,
+  Hanken_Grotesk,
   JetBrains_Mono,
   Noto_Sans_Thai,
 } from "next/font/google";
@@ -10,18 +10,20 @@ import { LocaleProvider } from "@/components/LocaleProvider";
 import { DEFAULT_PALETTE, DEFAULT_LOCALE } from "@/content/site";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+// Display face: a distinctive humanist grotesque with real character,
+// used for headings and other prominent type.
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-space-grotesk",
+  variable: "--font-display",
   display: "swap",
 });
 
-const newsreader = Newsreader({
+// Body/UI face: a clean, readable humanist sans for prose and interface text.
+const hankenGrotesk = Hanken_Grotesk({
   subsets: ["latin"],
-  weight: ["300", "400"],
-  style: ["normal", "italic"],
-  variable: "--font-newsreader",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -56,7 +58,7 @@ export default function RootLayout({
     <html
       lang={DEFAULT_LOCALE}
       data-palette={DEFAULT_PALETTE}
-      className={`${spaceGrotesk.variable} ${newsreader.variable} ${jetbrainsMono.variable} ${notoSansThai.variable}`}
+      className={`${bricolage.variable} ${hankenGrotesk.variable} ${jetbrainsMono.variable} ${notoSansThai.variable}`}
     >
       <body>
         <LocaleProvider>

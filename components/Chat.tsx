@@ -106,7 +106,7 @@ export function Chat() {
                     className={`max-w-[85%] px-[15px] py-3 text-[14px] leading-[1.5] ${
                       isUser
                         ? "rounded-[14px] rounded-br-[4px] bg-ink font-display text-paper"
-                        : "rounded-[14px] rounded-bl-[4px] bg-surface-alt font-serif text-ink"
+                        : "rounded-[14px] rounded-bl-[4px] bg-surface-alt font-body text-ink"
                     }`}
                   >
                     {m.content}

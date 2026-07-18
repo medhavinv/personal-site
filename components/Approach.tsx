@@ -16,7 +16,7 @@ export function Approach() {
       <h2 className="mb-3 mt-0 max-w-[20ch] font-display text-[34px] font-semibold leading-[1.1] tracking-[-0.02em]">
         {approach.heading}
       </h2>
-      <p className="mb-9 mt-0 max-w-[64ch] font-serif text-[19px] leading-[1.6] text-ink2">
+      <p className="mb-9 mt-0 max-w-[64ch] font-body text-[19px] leading-[1.6] text-ink2">
         {approach.intro}
       </p>
 
@@ -46,7 +46,7 @@ export function Approach() {
           <div className="mb-[14px] font-display text-[24px] font-semibold leading-[1.1]">
             {facet.label}
           </div>
-          <p className="m-0 mb-5 max-w-[70ch] font-serif text-[18px] leading-[1.55] text-[#d8d1c4]">
+          <p className="m-0 mb-5 max-w-[70ch] font-body text-[18px] leading-[1.55] text-[#d8d1c4]">
             {facet.blurb}
           </p>
           <div className="border-t border-[rgba(244,241,234,0.16)] pt-[18px]">

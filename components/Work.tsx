@@ -73,7 +73,7 @@ export function Work() {
                       <div className="mb-2 font-display text-[14px] font-medium text-ink2">
                         {r.title}
                       </div>
-                      <div className="max-w-[64ch] font-serif text-[16px] leading-[1.5] text-[#5c554a]">
+                      <div className="max-w-[64ch] font-body text-[16px] leading-[1.5] text-[#5c554a]">
                         {r.summary}
                       </div>
                     </div>

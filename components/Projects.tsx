@@ -14,7 +14,7 @@ export function Projects() {
           {projects.heading}
         </h2>
       </div>
-      <p className="mb-[30px] mt-0 max-w-[60ch] font-serif text-[19px] leading-[1.6] text-ink2">
+      <p className="mb-[30px] mt-0 max-w-[60ch] font-body text-[19px] leading-[1.6] text-ink2">
         {projects.intro}
       </p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -29,7 +29,7 @@ export function Projects() {
             <div className="mb-[10px] font-display text-[20px] font-semibold">
               {b.name}
             </div>
-            <div className="font-serif text-[16px] leading-[1.5] text-ink2">
+            <div className="font-body text-[16px] leading-[1.5] text-ink2">
               {b.desc}
             </div>
             {b.link && (

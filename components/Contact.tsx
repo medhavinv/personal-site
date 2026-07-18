@@ -48,7 +48,7 @@ export function Contact() {
           <h2 className="mb-5 mt-0 max-w-[14ch] font-display text-[34px] font-semibold leading-[1.1] tracking-[-0.02em]">
             {contact.heading}
           </h2>
-          <p className="mb-7 mt-0 font-serif text-[19px] leading-[1.6] text-ink2">
+          <p className="mb-7 mt-0 font-body text-[19px] leading-[1.6] text-ink2">
             {contact.intro}
           </p>
           <div className="flex flex-col gap-3 font-mono text-[14px] text-ink2">
@@ -78,7 +78,7 @@ export function Contact() {
               <div className="mb-2 font-display text-[20px] font-semibold">
                 {contact.successHeading(form.name || "there")}
               </div>
-              <div className="font-serif text-[17px] text-ink2">
+              <div className="font-body text-[17px] text-ink2">
                 {contact.successBody}
               </div>
             </div>
