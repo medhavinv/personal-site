@@ -1,5 +1,6 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
+import { Journey } from "@/components/Journey";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <Nav />
       <main className="mx-auto max-w-content px-8">
         <Hero />
+        <Journey />
       </main>
       <Footer />
     </div>
