@@ -35,6 +35,37 @@ the choice persists in `localStorage`.
 See [`.env.example`](.env.example). The Anthropic API key is used only in the
 server route `app/api/ask/route.ts` and is never exposed to the client.
 
+## Analytics
+
+First-party, no third-party script and no cookies. The client
+([`lib/analytics.ts`](lib/analytics.ts) + [`components/Analytics.tsx`](components/Analytics.tsx))
+sends events to `app/api/track/route.ts`, which enriches them server-side and
+hands them to a sink:
+
+- **Who visits** — a `pageview` event per load with referrer, UTM parameters,
+  language, and screen size; an anonymous `visitorId` (localStorage) counts
+  returning visits, and a salted one-way IP hash counts uniques without storing
+  raw IPs. Country/region/city fill in from edge geo headers in production.
+- **Which areas people look at** — a `section_view` event per section with the
+  dwell time it stayed in view, plus `chat_open`, `chat_message`, and
+  `contact_submit` engagement events.
+
+### Section-attention dashboard
+
+Add the **Vercel Upstash (Redis)** Marketplace integration (or set
+`UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`) and events aggregate into
+a store that powers **`/admin`** — a page that ranks which sections hold
+attention by total time in view, with average time per view and unique viewers,
+plus visitor totals and a recent-activity feed.
+
+Protect it by setting `ADMIN_PASSWORD` (and optionally `ADMIN_USER`, default
+`admin`); `/admin` is disabled until a password is set, so it is never public by
+accident. The free Upstash tier is enough for a personal site.
+
+Without a store, events are logged as structured JSON to your host's logs. Set
+`ANALYTICS_WEBHOOK_URL` to also forward them to a database or spreadsheet
+webhook, or `NEXT_PUBLIC_ANALYTICS_DISABLED=1` to turn analytics off.
+
 ## Structure
 
 - `app/` — App Router pages, layout, global styles, API routes.
