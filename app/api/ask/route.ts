@@ -1,21 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { aiContext } from "@/content/site";
+import { rateLimit } from "@/lib/rateLimit";
 
 export const runtime = "nodejs";
 
-// Simple in-memory rate limiter (per server instance). Swap for a shared store
-// such as Vercel KV / Upstash if you run multiple instances.
+// Rate limit each visitor. Backed by Upstash Redis when configured (shared
+// across serverless instances), with an in-memory fallback for local dev.
 const WINDOW_MS = 60_000;
 const MAX_PER_WINDOW = 15;
-const hits = new Map<string, number[]>();
-
-function rateLimited(ip: string): boolean {
-  const now = Date.now();
-  const recent = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
-  recent.push(now);
-  hits.set(ip, recent);
-  return recent.length > MAX_PER_WINDOW;
-}
 
 type Message = { role: "user" | "assistant"; content: string };
 
@@ -40,10 +32,15 @@ function sanitize(input: unknown): Message[] | null {
 export async function POST(req: NextRequest) {
   const ip =
     req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
-  if (rateLimited(ip)) {
+  const limit = await rateLimit(ip, {
+    windowMs: WINDOW_MS,
+    max: MAX_PER_WINDOW,
+    prefix: "ask",
+  });
+  if (limit.limited) {
     return NextResponse.json(
       { error: "Too many requests. Please slow down." },
-      { status: 429 },
+      { status: 429, headers: { "Retry-After": String(limit.retryAfter) } },
     );
   }
 
