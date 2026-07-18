@@ -5,6 +5,7 @@ import {
   JetBrains_Mono,
   Noto_Sans_Thai,
 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { LocaleProvider } from "@/components/LocaleProvider";
 import { DEFAULT_PALETTE, DEFAULT_LOCALE } from "@/content/site";
@@ -64,6 +65,7 @@ export default function RootLayout({
         <LocaleProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </LocaleProvider>
+        <Analytics />
       </body>
     </html>
   );
