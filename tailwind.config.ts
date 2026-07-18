@@ -31,16 +31,16 @@ const config: Config = {
       },
       fontFamily: {
         display: [
-          "var(--font-space-grotesk)",
+          "var(--font-display)",
           "var(--font-thai)",
           "system-ui",
           "sans-serif",
         ],
-        serif: [
-          "var(--font-newsreader)",
+        body: [
+          "var(--font-body)",
           "var(--font-thai)",
-          "Georgia",
-          "serif",
+          "system-ui",
+          "sans-serif",
         ],
         mono: [
           "var(--font-jetbrains-mono)",

@@ -11,7 +11,7 @@ export function Hero() {
         <span className="text-accent">{hero.headingAccent}</span>
         {hero.headingAfter}
       </h1>
-      <p className="mt-[30px] max-w-[56ch] font-serif text-[clamp(18px,2.1vw,24px)] font-light leading-[1.5] text-ink2">
+      <p className="mt-[30px] max-w-[56ch] font-body text-[clamp(18px,2.1vw,24px)] font-light leading-[1.5] text-ink2">
         {hero.lead}
       </p>
       <div className="mt-[38px] flex flex-wrap gap-[14px]">

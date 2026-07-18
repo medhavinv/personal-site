@@ -167,7 +167,7 @@ export function Journey() {
                       x={labelX}
                       y={top ? p.y - 18 : p.y + 28}
                       textAnchor={anchor}
-                      fontFamily="var(--font-jetbrains-mono), monospace"
+                      fontFamily="var(--font-jetbrains-mono), var(--font-thai), monospace"
                       fontSize={17}
                       fontWeight={isActive ? 700 : 500}
                       fill={isActive ? "var(--accent)" : "var(--muted)"}
@@ -202,7 +202,7 @@ export function Journey() {
               </div>
             </div>
             <div className="flex flex-col">
-              <p className="m-0 font-serif text-[18px] leading-[1.6] text-[#d8d1c4]">
+              <p className="m-0 font-body text-[18px] leading-[1.6] text-[#d8d1c4]">
                 {active.text}
               </p>
               <a

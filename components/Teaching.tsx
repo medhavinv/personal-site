@@ -74,7 +74,7 @@ export function Teaching() {
           {teaching.paragraphs.map((p, i) => (
             <p
               key={i}
-              className={`font-serif text-[19px] leading-[1.65] text-ink2 ${
+              className={`font-body text-[19px] leading-[1.65] text-ink2 ${
                 i === 0 ? "mb-4 mt-0" : "m-0"
               }`}
             >
@@ -104,7 +104,7 @@ export function Teaching() {
                 <div className="mb-[14px] font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-accent2">
                   {teaching.prompt}
                 </div>
-                <div className="font-serif text-[20px] leading-[1.3] text-paper sm:text-[24px]">
+                <div className="font-body text-[20px] leading-[1.3] text-paper sm:text-[24px]">
                   {cur.front}
                 </div>
                 <div className="mt-[18px] font-mono text-[11px] text-[#7d766a]">
@@ -116,7 +116,7 @@ export function Teaching() {
                 <div className="mb-[14px] font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-[#7a2f13]">
                   {teaching.answer}
                 </div>
-                <div className="font-serif text-[17px] leading-[1.45] sm:text-[19px]">
+                <div className="font-body text-[17px] leading-[1.45] sm:text-[19px]">
                   {cur.back}
                 </div>
               </div>

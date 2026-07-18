@@ -104,7 +104,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-family: var(--font-body), var(--font-thai), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 

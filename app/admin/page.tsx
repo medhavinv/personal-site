@@ -36,7 +36,7 @@ export default async function AdminPage() {
     return (
       <main className="mx-auto max-w-content px-8 py-16">
         <h1 className="font-display text-[28px] font-semibold">Analytics</h1>
-        <p className="mt-4 max-w-[60ch] font-serif text-[17px] text-ink2">
+        <p className="mt-4 max-w-[60ch] font-body text-[17px] text-ink2">
           The analytics store is not configured. Add the Vercel Upstash (Redis)
           integration, or set UPSTASH_REDIS_REST_URL and
           UPSTASH_REDIS_REST_TOKEN, then reload. Until then, events are still
