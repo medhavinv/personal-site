@@ -75,6 +75,9 @@ export type City = {
   lat: number;
   lng: number;
   labelPos: "top" | "bottom";
+  // How the map label sits relative to the dot. Edge cities anchor inward so
+  // long labels (e.g. "San Francisco") never clip against the cropped edge.
+  labelAnchor?: "start" | "middle" | "end";
 };
 
 export const journey = {
@@ -98,6 +101,7 @@ export const cities: City[] = [
     lat: 13.7563,
     lng: 100.5018,
     labelPos: "bottom",
+    labelAnchor: "end",
   },
   {
     id: "toronto",
@@ -111,6 +115,7 @@ export const cities: City[] = [
     lat: 43.6532,
     lng: -79.3832,
     labelPos: "top",
+    labelAnchor: "middle",
   },
   {
     id: "sf",
@@ -124,6 +129,7 @@ export const cities: City[] = [
     lat: 37.7749,
     lng: -122.4194,
     labelPos: "bottom",
+    labelAnchor: "start",
   },
   {
     id: "seattle",
@@ -137,6 +143,7 @@ export const cities: City[] = [
     lat: 47.6062,
     lng: -122.3321,
     labelPos: "top",
+    labelAnchor: "start",
   },
 ];
 
