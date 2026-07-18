@@ -50,7 +50,7 @@ export function Journey() {
         {/* Map (full width, stacked above the detail card so the globe is large).
             slice fills the card and crops the poles; the cities stay centered so
             all four dots remain in frame at every width. */}
-        <div className="relative h-[240px] w-full overflow-hidden rounded-[12px] border border-hairline-strong bg-surface sm:h-[360px] md:h-[520px]">
+        <div className="relative h-[188px] w-full overflow-hidden rounded-[12px] border border-hairline-strong bg-surface sm:h-[340px] md:h-[520px]">
           {mapReady && (
             <svg
               viewBox={`0 0 ${MAP_W} ${MAP_H}`}
