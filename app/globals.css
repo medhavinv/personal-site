@@ -116,6 +116,78 @@ section {
   background: var(--accent-ring);
 }
 
+/*
+  Hero aurora: two soft, accent-tinted blobs that drift and breathe very slowly
+  behind the top of the page. Palette-aware (built from --accent / --accent2),
+  masked to fade out before the Journey section, and frozen for anyone who
+  prefers reduced motion. Purely decorative and pointer-inert.
+*/
+.hero-aura {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: clamp(560px, 92vh, 900px);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+  -webkit-mask-image: linear-gradient(to bottom, #000 52%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 52%, transparent 100%);
+}
+.hero-aura__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(64px);
+  will-change: transform;
+}
+.hero-aura__blob--a {
+  width: 54vw;
+  height: 54vw;
+  left: -10vw;
+  top: -8vw;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 16%, transparent),
+    transparent 62%
+  );
+  animation: auraDriftA 30s ease-in-out infinite;
+}
+.hero-aura__blob--b {
+  width: 48vw;
+  height: 48vw;
+  right: -8vw;
+  top: 0;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent2) 20%, transparent),
+    transparent 62%
+  );
+  animation: auraDriftB 36s ease-in-out infinite;
+}
+@keyframes auraDriftA {
+  0%,
+  100% {
+    transform: translate(-4%, -3%) scale(1);
+  }
+  50% {
+    transform: translate(5%, 4%) scale(1.14);
+  }
+}
+@keyframes auraDriftB {
+  0%,
+  100% {
+    transform: translate(3%, 2%) scale(1.08);
+  }
+  50% {
+    transform: translate(-5%, -3%) scale(0.94);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-aura__blob {
+    animation: none;
+  }
+}
+
 /* Hide the scrollbar on the mobile nav index row while keeping it scrollable. */
 .no-scrollbar {
   -ms-overflow-style: none;
