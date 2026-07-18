@@ -8,6 +8,7 @@ export function HeroAura() {
     <div className="hero-aura" aria-hidden="true">
       <div className="hero-aura__blob hero-aura__blob--a" />
       <div className="hero-aura__blob hero-aura__blob--b" />
+      <div className="hero-aura__blob hero-aura__blob--c" />
     </div>
   );
 }
