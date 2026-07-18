@@ -116,6 +116,15 @@ section {
   background: var(--accent-ring);
 }
 
+/* Hide the scrollbar on the mobile nav index row while keeping it scrollable. */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Flip-card 3D helpers for the teaching Q&A widget. */
 .flip3d {
   transform-style: preserve-3d;

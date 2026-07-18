@@ -2,9 +2,10 @@
  * World-map geometry for the Journey section.
  *
  * The atlas ships locally via the `world-atlas` npm package, so there is no
- * runtime CDN fetch. Projection and coordinates match the prototype exactly:
- * geoNaturalEarth1 fit to a sphere inside a 10px inset of the 720x400 viewBox.
- * Everything is computed once at module load and shared.
+ * runtime CDN fetch. The projection is geoNaturalEarth1, but instead of fitting
+ * the whole sphere it fits to the four journey cities so the map is zoomed in
+ * and the dots are large. The land extends past the viewBox and is simply
+ * clipped, which is fine. Everything is computed once at module load.
  *
  * The map is decorative-degradable: if anything here throws, the exports fall
  * back to empty/no-op values and the Journey section still works.
@@ -14,9 +15,16 @@ import { geoNaturalEarth1, geoPath, geoGraticule10 } from "d3-geo";
 import type { GeoProjection } from "d3-geo";
 import type { Topology, GeometryObject } from "topojson-specification";
 import worldData from "world-atlas/countries-110m.json";
+import { cities } from "@/content/site";
 
-export const MAP_W = 720;
-export const MAP_H = 400;
+export const MAP_W = 800;
+export const MAP_H = 520;
+
+// Inset padding around the cities. Horizontal room keeps wide labels like
+// "San Francisco" clear of the edges (which slice can crop); vertical room
+// keeps the top/bottom labels in view once the poles are cropped.
+const PAD_X = 130;
+const PAD_Y = 96;
 
 let landPath = "";
 let gratPath = "";
@@ -28,12 +36,17 @@ try {
     topology,
     topology.objects.countries as GeometryObject,
   );
+  // Fit to the cities (zoom in) rather than the whole sphere.
+  const cityBounds = {
+    type: "MultiPoint" as const,
+    coordinates: cities.map((c) => [c.lng, c.lat]),
+  };
   projection = geoNaturalEarth1().fitExtent(
     [
-      [10, 10],
-      [MAP_W - 10, MAP_H - 10],
+      [PAD_X, PAD_Y],
+      [MAP_W - PAD_X, MAP_H - PAD_Y],
     ],
-    { type: "Sphere" },
+    cityBounds,
   );
   const path = geoPath(projection);
   landPath = path(land) ?? "";
