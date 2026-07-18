@@ -15,7 +15,7 @@ import { geoNaturalEarth1, geoPath, geoGraticule10 } from "d3-geo";
 import type { GeoProjection } from "d3-geo";
 import type { Topology, GeometryObject } from "topojson-specification";
 import worldData from "world-atlas/countries-110m.json";
-import { cities } from "@/content/site";
+import { cityGeo } from "@/content/site";
 
 export const MAP_W = 800;
 export const MAP_H = 520;
@@ -40,7 +40,7 @@ try {
   // Fit to the cities (zoom in) rather than the whole sphere.
   const cityBounds = {
     type: "MultiPoint" as const,
-    coordinates: cities.map((c) => [c.lng, c.lat]),
+    coordinates: cityGeo.map((c) => [c.lng, c.lat]),
   };
   projection = geoNaturalEarth1().fitExtent(
     [

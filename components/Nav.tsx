@@ -1,14 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { brand, navItems, sectionIds } from "@/content/site";
+import { sectionIds } from "@/content/site";
+import { useContent } from "@/components/LocaleProvider";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export function Nav() {
+  const { brand, navItems } = useContent();
   const [active, setActive] = useState("top");
   const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
-  // Active-section highlighting: mirror the prototype's IntersectionObserver
-  // band so a link lights up while its section owns the middle of the viewport.
+  // Active-section highlighting: a link lights up while its section owns the
+  // middle of the viewport.
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -36,15 +39,20 @@ export function Nav() {
 
   return (
     <nav className="sticky top-0 z-50 border-b border-hairline bg-surface/[0.86] backdrop-blur-[10px]">
-      <div className="mx-auto flex max-w-content flex-col gap-2 px-5 py-[10px] md:flex-row md:items-center md:justify-between md:gap-4 md:px-8 md:py-[14px]">
+      <div className="mx-auto flex max-w-content flex-wrap items-center gap-x-4 gap-y-2 px-5 py-[10px] md:px-8 md:py-[14px]">
         <a
           href="#top"
-          className="shrink-0 whitespace-nowrap font-display text-[15px] font-semibold leading-none tracking-[-0.01em] text-ink"
+          className="order-1 shrink-0 whitespace-nowrap font-display text-[15px] font-semibold leading-none tracking-[-0.01em] text-ink"
         >
           {brand.name}
           <span className="text-accent">.</span>
         </a>
-        <div className="no-scrollbar -mx-5 flex items-center gap-1 overflow-x-auto px-5 md:mx-0 md:flex-wrap md:justify-end md:overflow-visible md:px-0">
+
+        <div className="order-2 ml-auto md:order-3 md:ml-0">
+          <LanguageSwitcher />
+        </div>
+
+        <div className="no-scrollbar order-3 -mx-5 flex basis-full items-center gap-1 overflow-x-auto px-5 md:order-2 md:mx-0 md:ml-auto md:mr-1 md:basis-auto md:flex-wrap md:justify-end md:overflow-visible md:px-0">
           {navItems.map((item) => {
             const isActive = active === item.id;
             return (

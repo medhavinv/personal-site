@@ -30,9 +30,24 @@ const config: Config = {
         "hairline-strong": "var(--hairline-strong)",
       },
       fontFamily: {
-        display: ["var(--font-space-grotesk)", "system-ui", "sans-serif"],
-        serif: ["var(--font-newsreader)", "Georgia", "serif"],
-        mono: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
+        display: [
+          "var(--font-space-grotesk)",
+          "var(--font-thai)",
+          "system-ui",
+          "sans-serif",
+        ],
+        serif: [
+          "var(--font-newsreader)",
+          "var(--font-thai)",
+          "Georgia",
+          "serif",
+        ],
+        mono: [
+          "var(--font-jetbrains-mono)",
+          "var(--font-thai)",
+          "ui-monospace",
+          "monospace",
+        ],
       },
       maxWidth: {
         content: "1120px",

@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Newsreader, JetBrains_Mono } from "next/font/google";
+import {
+  Space_Grotesk,
+  Newsreader,
+  JetBrains_Mono,
+  Noto_Sans_Thai,
+} from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { DEFAULT_PALETTE } from "@/content/site";
+import { LocaleProvider } from "@/components/LocaleProvider";
+import { DEFAULT_PALETTE, DEFAULT_LOCALE } from "@/content/site";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -26,6 +32,15 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+// Thai glyph fallback: Latin display fonts lack Thai coverage, so Thai
+// characters fall through to this while Latin keeps the design fonts.
+const notoSansThai = Noto_Sans_Thai({
+  subsets: ["thai"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-thai",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Vin Vadhanasindhu · Product Manager",
   description:
@@ -39,12 +54,14 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
+      lang={DEFAULT_LOCALE}
       data-palette={DEFAULT_PALETTE}
-      className={`${spaceGrotesk.variable} ${newsreader.variable} ${jetbrainsMono.variable}`}
+      className={`${spaceGrotesk.variable} ${newsreader.variable} ${jetbrainsMono.variable} ${notoSansThai.variable}`}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <LocaleProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </LocaleProvider>
       </body>
     </html>
   );

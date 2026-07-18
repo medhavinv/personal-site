@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { cities, journey } from "@/content/site";
+import { useContent } from "@/components/LocaleProvider";
 import {
   MAP_W,
   MAP_H,
@@ -12,6 +12,7 @@ import {
 } from "@/lib/worldMap";
 
 export function Journey() {
+  const { cities, journey } = useContent();
   const [activeCity, setActiveCity] = useState(journey.defaultCity);
 
   // Project each city to viewBox coordinates once.
@@ -21,7 +22,7 @@ export function Journey() {
       xy[c.id] = project(c.lng, c.lat);
     });
     return xy;
-  }, []);
+  }, [cities]);
 
   const routePts = useMemo(
     () =>

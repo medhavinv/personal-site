@@ -1,6 +1,9 @@
-import { hero } from "@/content/site";
+"use client";
+
+import { useContent } from "@/components/LocaleProvider";
 
 export function Hero() {
+  const { hero } = useContent();
   return (
     <section id="top" className="pb-10 pt-[76px]">
       <h1 className="m-0 max-w-[16ch] font-display text-[clamp(42px,6.6vw,84px)] font-bold leading-[0.98] tracking-[-0.03em]">

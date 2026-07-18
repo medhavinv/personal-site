@@ -1,6 +1,9 @@
-import { builds, projects } from "@/content/site";
+"use client";
+
+import { useContent } from "@/components/LocaleProvider";
 
 export function Projects() {
+  const { projects, builds } = useContent();
   return (
     <section id="projects" className="border-t border-hairline py-[60px]">
       <div className="mb-5 font-mono text-[11px] font-medium uppercase leading-none tracking-[0.14em] text-faint">
@@ -17,7 +20,7 @@ export function Projects() {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {builds.map((b) => (
           <div
-            key={b.name}
+            key={b.id}
             className="flex flex-col rounded-[12px] border border-hairline-strong bg-surface px-[26px] py-6"
           >
             <div className="mb-[14px] font-mono text-[10px] font-medium uppercase leading-none tracking-[0.1em] text-accent">
@@ -36,7 +39,7 @@ export function Projects() {
                 rel="noopener"
                 className="mt-[14px] font-mono text-[13px] font-medium text-accent"
               >
-                Visit site →
+                {projects.visitSite}
               </a>
             )}
           </div>

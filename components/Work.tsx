@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { roles, work } from "@/content/site";
+import { useContent } from "@/components/LocaleProvider";
 
 export function Work() {
+  const { roles, work } = useContent();
   const [filter, setFilter] = useState("All");
   const [openRole, setOpenRole] = useState<string | null>(work.defaultOpenRole);
 
@@ -33,7 +34,7 @@ export function Work() {
                     : "border border-[rgba(30,27,22,0.24)] bg-transparent text-ink"
                 }`}
               >
-                {k}
+                {work.filterLabels[k] ?? k}
               </button>
             );
           })}
