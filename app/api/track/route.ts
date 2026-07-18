@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createHash } from "crypto";
+import { recordEvent } from "@/lib/analyticsStore";
 
 export const runtime = "nodejs";
 
@@ -73,6 +74,10 @@ export async function POST(req: NextRequest) {
     city: req.headers.get("x-vercel-ip-city") || null,
   };
 
+  // Aggregate into the store (Vercel KV / Upstash) when configured. Powers the
+  // /admin section-attention view. No-ops without credentials.
+  await recordEvent(enriched).catch(() => {});
+
   const webhook = process.env.ANALYTICS_WEBHOOK_URL;
   if (webhook) {
     // Fire-and-forget; never block the beacon response.
@@ -81,7 +86,8 @@ export async function POST(req: NextRequest) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(enriched),
     }).catch(() => {});
-  } else {
+  } else if (!process.env.UPSTASH_REDIS_REST_URL && !process.env.KV_REST_API_URL) {
+    // Fall back to structured logs only when no store and no webhook exist.
     console.log("[analytics]", JSON.stringify(enriched));
   }
 

@@ -50,9 +50,21 @@ hands them to a sink:
   dwell time it stayed in view, plus `chat_open`, `chat_message`, and
   `contact_submit` engagement events.
 
-By default events are logged as structured JSON to your host's logs. Set
-`ANALYTICS_WEBHOOK_URL` to forward them to a database or spreadsheet webhook
-instead, or `NEXT_PUBLIC_ANALYTICS_DISABLED=1` to turn analytics off.
+### Section-attention dashboard
+
+Add the **Vercel Upstash (Redis)** Marketplace integration (or set
+`UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`) and events aggregate into
+a store that powers **`/admin`** — a page that ranks which sections hold
+attention by total time in view, with average time per view and unique viewers,
+plus visitor totals and a recent-activity feed.
+
+Protect it by setting `ADMIN_PASSWORD` (and optionally `ADMIN_USER`, default
+`admin`); `/admin` is disabled until a password is set, so it is never public by
+accident. The free Upstash tier is enough for a personal site.
+
+Without a store, events are logged as structured JSON to your host's logs. Set
+`ANALYTICS_WEBHOOK_URL` to also forward them to a database or spreadsheet
+webhook, or `NEXT_PUBLIC_ANALYTICS_DISABLED=1` to turn analytics off.
 
 ## Structure
 
