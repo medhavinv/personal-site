@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useContent } from "@/components/LocaleProvider";
 import {
   MAP_W,
@@ -34,6 +34,53 @@ export function Journey() {
   );
 
   const active = cities.find((c) => c.id === activeCity) ?? cities[0];
+
+  // Order used when swiping through cities. Fall back to the raw city list for
+  // any ids missing from routeOrder so no city is unreachable.
+  const swipeOrder = useMemo(() => {
+    const seen = new Set<string>();
+    const ordered: string[] = [];
+    journey.routeOrder.forEach((id) => {
+      if (cities.some((c) => c.id === id) && !seen.has(id)) {
+        seen.add(id);
+        ordered.push(id);
+      }
+    });
+    cities.forEach((c) => {
+      if (!seen.has(c.id)) {
+        seen.add(c.id);
+        ordered.push(c.id);
+      }
+    });
+    return ordered;
+  }, [journey.routeOrder, cities]);
+
+  const step = (dir: -1 | 1) => {
+    if (swipeOrder.length === 0) return;
+    const i = swipeOrder.indexOf(active.id);
+    const next = (i + dir + swipeOrder.length) % swipeOrder.length;
+    setActiveCity(swipeOrder[next]);
+  };
+
+  // Track the horizontal swipe gesture on the detail card.
+  const swipeStart = useRef<{ x: number; y: number } | null>(null);
+  const SWIPE_THRESHOLD = 40;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    const t = e.touches[0];
+    swipeStart.current = { x: t.clientX, y: t.clientY };
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (!swipeStart.current) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - swipeStart.current.x;
+    const dy = t.clientY - swipeStart.current.y;
+    swipeStart.current = null;
+    if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+      // Swipe left → next city, swipe right → previous city.
+      step(dx < 0 ? 1 : -1);
+    }
+  };
 
   return (
     <section
@@ -135,29 +182,74 @@ export function Journey() {
           )}
         </div>
 
-        {/* Detail card (full width, below the map) */}
-        <div className="grid grid-cols-1 gap-x-10 gap-y-4 rounded-[12px] bg-ink px-[30px] py-8 text-paper md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)] md:items-center">
-          <div>
-            <div className="mb-4 font-mono text-[11px] font-medium uppercase leading-none tracking-[0.12em] text-accent2">
-              {active.kicker} · {active.years}
+        {/* Detail card (full width, below the map). Swipe left/right — or use
+            the arrow buttons — to iterate through the cities. */}
+        <div
+          className="relative touch-pan-y select-none rounded-[12px] bg-ink px-[30px] py-8 text-paper"
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
+          <div className="grid grid-cols-1 gap-x-10 gap-y-4 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)] md:items-center">
+            <div>
+              <div className="mb-4 font-mono text-[11px] font-medium uppercase leading-none tracking-[0.12em] text-accent2">
+                {active.kicker} · {active.years}
+              </div>
+              <div className="mb-1 font-display text-[28px] font-semibold leading-[1.1]">
+                {active.name}
+              </div>
+              <div className="font-mono text-[13px] font-normal text-[#9a9285]">
+                {active.country}
+              </div>
             </div>
-            <div className="mb-1 font-display text-[28px] font-semibold leading-[1.1]">
-              {active.name}
-            </div>
-            <div className="font-mono text-[13px] font-normal text-[#9a9285]">
-              {active.country}
+            <div className="flex flex-col">
+              <p className="m-0 font-serif text-[18px] leading-[1.6] text-[#d8d1c4]">
+                {active.text}
+              </p>
+              <a
+                href={active.link}
+                className="mt-5 font-display text-[13px] font-medium text-accent2"
+              >
+                {active.linkLabel}
+              </a>
             </div>
           </div>
-          <div className="flex flex-col">
-            <p className="m-0 font-serif text-[18px] leading-[1.6] text-[#d8d1c4]">
-              {active.text}
-            </p>
-            <a
-              href={active.link}
-              className="mt-5 font-display text-[13px] font-medium text-accent2"
+
+          {/* Swipe controls: prev/next arrows + position dots */}
+          <div className="mt-7 flex items-center justify-between border-t border-white/10 pt-5">
+            <button
+              type="button"
+              aria-label="Previous city"
+              onClick={() => step(-1)}
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-paper transition-colors hover:border-accent2 hover:text-accent2"
             >
-              {active.linkLabel}
-            </a>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M15 6l-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <div className="flex items-center gap-2">
+              {swipeOrder.map((id) => (
+                <button
+                  key={id}
+                  type="button"
+                  aria-label={`Show ${id}`}
+                  aria-current={id === active.id}
+                  onClick={() => setActiveCity(id)}
+                  className={`h-2 w-2 rounded-full transition-colors ${
+                    id === active.id ? "bg-accent2" : "bg-white/25 hover:bg-white/50"
+                  }`}
+                />
+              ))}
+            </div>
+            <button
+              type="button"
+              aria-label="Next city"
+              onClick={() => step(1)}
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-paper transition-colors hover:border-accent2 hover:text-accent2"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
