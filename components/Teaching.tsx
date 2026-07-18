@@ -144,20 +144,28 @@ export function Teaching() {
         <div className="mb-4 font-mono text-[10px] font-medium uppercase leading-none tracking-[0.12em] text-faint">
           {teaching.galleryLabel}
         </div>
-        <div className="grid h-[280px] grid-cols-[2fr_1fr_1fr] gap-[14px]">
+        {/* 2x2 grid of aspect tiles on mobile; the wide 2fr·1fr·1fr collage on
+            larger screens. Flat children so the layout can reflow cleanly. */}
+        <div className="grid grid-cols-2 gap-[14px] sm:h-[280px] sm:grid-cols-[2fr_1fr_1fr] sm:grid-rows-2">
           <PhotoTile
             src={teachingPhotos[0].src}
             alt={teachingPhotos[0].alt}
-            className="h-full"
+            className="aspect-[4/3] sm:aspect-auto sm:row-span-2 sm:h-full"
           />
-          <div className="grid grid-rows-2 gap-[14px]">
-            <PhotoTile src={teachingPhotos[1].src} alt={teachingPhotos[1].alt} />
-            <PhotoTile src={teachingPhotos[2].src} alt={teachingPhotos[2].alt} />
-          </div>
+          <PhotoTile
+            src={teachingPhotos[1].src}
+            alt={teachingPhotos[1].alt}
+            className="aspect-[4/3] sm:aspect-auto sm:h-full"
+          />
+          <PhotoTile
+            src={teachingPhotos[2].src}
+            alt={teachingPhotos[2].alt}
+            className="aspect-[4/3] sm:aspect-auto sm:h-full"
+          />
           <PhotoTile
             src={teachingPhotos[3].src}
             alt={teachingPhotos[3].alt}
-            className="h-full"
+            className="aspect-[4/3] sm:aspect-auto sm:col-start-3 sm:row-span-2 sm:row-start-1 sm:h-full"
           />
         </div>
       </div>
