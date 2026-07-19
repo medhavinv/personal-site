@@ -34,13 +34,13 @@ export const sectionIds = [
   "role",
   "journey",
   "work",
-  "projects",
   "teaching",
+  "projects",
   "contact",
 ];
 
 // Section ids that appear in the nav, in order.
-const navSectionIds = ["role", "journey", "work", "projects", "teaching", "contact"];
+const navSectionIds = ["role", "journey", "work", "teaching", "projects", "contact"];
 
 export const brandName = "Vin Vadhanasindhu";
 
@@ -432,7 +432,7 @@ const en: Strings = {
     },
   },
   teaching: {
-    kicker: "05 · Teaching",
+    kicker: "04 · Teaching",
     heading: "One week a year, back in the classroom.",
     paragraphs: [
       "One week each year I go back to Bangkok to teach in the {strong}LLBel program at Chulalongkorn University{/strong}, an intensive bootcamp for law students. I cover product management, design thinking, and how the tech industry works, so future lawyers and regulators understand the systems they will advise on and regulate.",
@@ -472,7 +472,7 @@ const en: Strings = {
     teach4: "Students at the bootcamp",
   },
   projects: {
-    kicker: "04 · Things I've built",
+    kicker: "05 · Things I've built",
     heading: "Things I've built.",
     intro:
       "A mix of side projects, university work, and things I shipped on the job. Patents, platforms, and tools I built to close a real gap.",
@@ -777,7 +777,7 @@ const th: Strings = {
     },
   },
   teaching: {
-    kicker: "05 · การสอน",
+    kicker: "04 · การสอน",
     heading: "หนึ่งสัปดาห์ต่อปี กลับเข้าห้องเรียนอีกครั้ง",
     paragraphs: [
       "ทุกปีผมกลับกรุงเทพฯ หนึ่งสัปดาห์เพื่อสอนใน{strong}หลักสูตร LLBel ที่จุฬาลงกรณ์มหาวิทยาลัย{/strong} ซึ่งเป็นบูตแคมป์เข้มข้นสำหรับนักศึกษากฎหมาย ผมสอนเรื่องการบริหารผลิตภัณฑ์ การคิดเชิงออกแบบ และการทำงานของวงการเทคโนโลยี เพื่อให้นักกฎหมายและผู้กำกับดูแลในอนาคตเข้าใจระบบที่พวกเขาจะให้คำปรึกษาและกำกับดูแล",
@@ -817,7 +817,7 @@ const th: Strings = {
     teach4: "นักศึกษาในบูตแคมป์",
   },
   projects: {
-    kicker: "04 · สิ่งที่ผมสร้าง",
+    kicker: "05 · สิ่งที่ผมสร้าง",
     heading: "สิ่งที่ผมสร้าง",
     intro:
       "ทั้งโปรเจกต์ส่วนตัว งานสมัยเรียน และสิ่งที่ผมส่งมอบในงานประจำ ทั้งสิทธิบัตร แพลตฟอร์ม และเครื่องมือที่ผมสร้างเพื่อปิดช่องว่างที่มีอยู่จริง",
