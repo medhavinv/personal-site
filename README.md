@@ -37,6 +37,11 @@ server route `app/api/ask/route.ts` and is never exposed to the client.
 
 ## Analytics
 
+Vercel Web Analytics ([`@vercel/analytics`](https://vercel.com/docs/analytics))
+is wired into the root layout via the `<Analytics />` component. It only
+collects data when the site is deployed on Vercel with the Web Analytics
+project setting enabled; it's a no-op in local dev and elsewhere.
+
 First-party, no third-party script and no cookies. The client
 ([`lib/analytics.ts`](lib/analytics.ts) + [`components/Analytics.tsx`](components/Analytics.tsx))
 sends events to `app/api/track/route.ts`, which enriches them server-side and
