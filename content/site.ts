@@ -31,16 +31,16 @@ export const LOCALE_LABELS: Record<Locale, string> = { en: "EN", th: "ไทย"
 
 export const sectionIds = [
   "top",
-  "journey",
   "role",
+  "journey",
   "work",
-  "teaching",
   "projects",
+  "teaching",
   "contact",
 ];
 
 // Section ids that appear in the nav, in order.
-const navSectionIds = ["journey", "role", "work", "teaching", "projects", "contact"];
+const navSectionIds = ["role", "journey", "work", "projects", "teaching", "contact"];
 
 export const brandName = "Vin Vadhanasindhu";
 
@@ -234,7 +234,7 @@ const en: Strings = {
     ],
   },
   journey: {
-    kicker: "01 · Journey",
+    kicker: "02 · Journey",
     heading: "From Thailand to Canada and the US.",
   },
   cities: {
@@ -272,7 +272,7 @@ const en: Strings = {
     },
   },
   approach: {
-    kicker: "02 · The role",
+    kicker: "01 · The role",
     heading: "What does a product manager actually do?",
     intro:
       "A PM turns technical and business judgment, data, and customer insight into strategy, execution, and alignment, so the work reaches customers as real impact.",
@@ -432,7 +432,7 @@ const en: Strings = {
     },
   },
   teaching: {
-    kicker: "04 · Teaching",
+    kicker: "05 · Teaching",
     heading: "One week a year, back in the classroom.",
     paragraphs: [
       "One week each year I go back to Bangkok to teach in the {strong}LLBel program at Chulalongkorn University{/strong}, an intensive bootcamp for law students. I cover product management, design thinking, and how the tech industry works, so future lawyers and regulators understand the systems they will advise on and regulate.",
@@ -472,7 +472,7 @@ const en: Strings = {
     teach4: "Students at the bootcamp",
   },
   projects: {
-    kicker: "05 · Things I've built",
+    kicker: "04 · Things I've built",
     heading: "Things I've built.",
     intro:
       "A mix of side projects, university work, and things I shipped on the job. Patents, platforms, and tools I built to close a real gap.",
@@ -579,7 +579,7 @@ const th: Strings = {
     ],
   },
   journey: {
-    kicker: "01 · เส้นทาง",
+    kicker: "02 · เส้นทาง",
     heading: "จากประเทศไทย สู่แคนาดาและสหรัฐอเมริกา",
   },
   cities: {
@@ -617,7 +617,7 @@ const th: Strings = {
     },
   },
   approach: {
-    kicker: "02 · บทบาท",
+    kicker: "01 · บทบาท",
     heading: "จริง ๆ แล้ว product manager ทำอะไรบ้าง?",
     intro:
       "PM เปลี่ยนวิจารณญาณด้านเทคนิคและธุรกิจ ข้อมูล และความเข้าใจลูกค้า ให้กลายเป็นกลยุทธ์ การลงมือทำ และการทำให้ทุกฝ่ายไปในทิศทางเดียวกัน เพื่อให้งานส่งถึงมือลูกค้าเป็นผลลัพธ์ที่จับต้องได้จริง",
@@ -777,7 +777,7 @@ const th: Strings = {
     },
   },
   teaching: {
-    kicker: "04 · การสอน",
+    kicker: "05 · การสอน",
     heading: "หนึ่งสัปดาห์ต่อปี กลับเข้าห้องเรียนอีกครั้ง",
     paragraphs: [
       "ทุกปีผมกลับกรุงเทพฯ หนึ่งสัปดาห์เพื่อสอนใน{strong}หลักสูตร LLBel ที่จุฬาลงกรณ์มหาวิทยาลัย{/strong} ซึ่งเป็นบูตแคมป์เข้มข้นสำหรับนักศึกษากฎหมาย ผมสอนเรื่องการบริหารผลิตภัณฑ์ การคิดเชิงออกแบบ และการทำงานของวงการเทคโนโลยี เพื่อให้นักกฎหมายและผู้กำกับดูแลในอนาคตเข้าใจระบบที่พวกเขาจะให้คำปรึกษาและกำกับดูแล",
@@ -817,7 +817,7 @@ const th: Strings = {
     teach4: "นักศึกษาในบูตแคมป์",
   },
   projects: {
-    kicker: "05 · สิ่งที่ผมสร้าง",
+    kicker: "04 · สิ่งที่ผมสร้าง",
     heading: "สิ่งที่ผมสร้าง",
     intro:
       "ทั้งโปรเจกต์ส่วนตัว งานสมัยเรียน และสิ่งที่ผมส่งมอบในงานประจำ ทั้งสิทธิบัตร แพลตฟอร์ม และเครื่องมือที่ผมสร้างเพื่อปิดช่องว่างที่มีอยู่จริง",
