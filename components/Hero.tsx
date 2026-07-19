@@ -17,24 +17,25 @@ export function Hero() {
       <div className="mt-[38px] flex flex-wrap gap-[14px]">
         <a
           href={hero.primaryCta.href}
-          className="rounded-full bg-ink px-[26px] py-[13px] font-display text-[14px] font-medium text-paper"
+          className="rounded-full bg-ink px-[26px] py-[13px] font-display text-[14px] font-medium text-paper transition-opacity hover:opacity-85"
         >
           {hero.primaryCta.label}
         </a>
         <a
           href={hero.secondaryCta.href}
-          className="rounded-full border border-[rgba(30,27,22,0.3)] px-[26px] py-[13px] font-display text-[14px] font-medium text-ink"
+          className="rounded-full border border-[rgba(30,27,22,0.3)] px-[26px] py-[13px] font-display text-[14px] font-medium text-ink transition-colors hover:border-ink hover:bg-surface"
         >
           {hero.secondaryCta.label}
         </a>
       </div>
-      <div className="mt-[52px] grid grid-cols-3 overflow-hidden rounded-[10px] border border-hairline-strong bg-surface">
+      {/* Facts: stacked rows on narrow screens, three columns from sm up. */}
+      <div className="mt-[52px] grid grid-cols-1 overflow-hidden rounded-[10px] border border-hairline-strong bg-surface sm:grid-cols-3">
         {hero.facts.map((fact, i) => (
           <div
             key={fact.label}
             className={
               i < hero.facts.length - 1
-                ? "border-r border-[rgba(30,27,22,0.14)] px-[22px] py-5"
+                ? "border-b border-[rgba(30,27,22,0.14)] px-[22px] py-5 sm:border-b-0 sm:border-r"
                 : "px-[22px] py-5"
             }
           >

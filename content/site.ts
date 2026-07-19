@@ -32,15 +32,15 @@ export const LOCALE_LABELS: Record<Locale, string> = { en: "EN", th: "ไทย"
 export const sectionIds = [
   "top",
   "role",
-  "journey",
   "work",
+  "journey",
   "teaching",
   "projects",
   "contact",
 ];
 
 // Section ids that appear in the nav, in order.
-const navSectionIds = ["role", "journey", "work", "teaching", "projects", "contact"];
+const navSectionIds = ["role", "work", "journey", "teaching", "projects", "contact"];
 
 export const brandName = "Vin Vadhanasindhu";
 
@@ -91,7 +91,7 @@ const roleMeta: { id: string; tags: string[] }[] = [
 const buildMeta: { id: string; link?: string }[] = [
   { id: "lawcu", link: "https://lawcu2026.perthcha.com/" },
   { id: "estimatedTax", link: "https://estimated-tax.vercel.app/" },
-  { id: "patent" },
+  { id: "patent", link: "https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2020027931" },
   { id: "distributed" },
   { id: "priorityGo" },
   { id: "nluBot" },
@@ -134,7 +134,15 @@ export type Role = {
   bullets: string[];
   metrics: string[];
 };
-export type Build = { id: string; name: string; meta: string; desc: string; link?: string };
+export type Build = {
+  id: string;
+  name: string;
+  meta: string;
+  desc: string;
+  link?: string;
+  // Overrides the default "Visit site" label for links that are not websites.
+  linkLabel?: string;
+};
 export type Flashcard = { front: string; back: string };
 export type TeachingPhoto = { id: string; src: string | null; alt: string };
 
@@ -175,7 +183,7 @@ type Strings = {
   flashcards: Flashcard[];
   photoAlts: Record<string, string>;
   projects: { kicker: string; heading: string; intro: string; visitSite: string };
-  builds: Record<string, { name: string; meta: string; desc: string }>;
+  builds: Record<string, { name: string; meta: string; desc: string; linkLabel?: string }>;
   contact: {
     kicker: string;
     heading: string;
@@ -234,7 +242,7 @@ const en: Strings = {
     ],
   },
   journey: {
-    kicker: "02 · Journey",
+    kicker: "03 · Journey",
     heading: "From Thailand to Canada and the US.",
   },
   cities: {
@@ -308,7 +316,7 @@ const en: Strings = {
     },
   },
   work: {
-    kicker: "03 · Professional work",
+    kicker: "02 · Professional work",
     heading: "A decade of shipping.",
     filterLabels: {
       All: "All",
@@ -493,6 +501,7 @@ const en: Strings = {
       name: "Real-Time Telemetry Monitoring",
       meta: "Patent · WO/2020/027931",
       desc: "A granted patent for a real-time telemetry monitoring tool, filed 2018 during my time in industry.",
+      linkLabel: "View patent record →",
     },
     distributed: {
       name: "Distributed Learning System",
@@ -579,7 +588,7 @@ const th: Strings = {
     ],
   },
   journey: {
-    kicker: "02 · เส้นทาง",
+    kicker: "03 · เส้นทาง",
     heading: "จากประเทศไทย สู่แคนาดาและสหรัฐอเมริกา",
   },
   cities: {
@@ -653,7 +662,7 @@ const th: Strings = {
     },
   },
   work: {
-    kicker: "03 · ประสบการณ์ทำงาน",
+    kicker: "02 · ประสบการณ์ทำงาน",
     heading: "หนึ่งทศวรรษของการส่งมอบงาน",
     filterLabels: {
       All: "ทั้งหมด",
@@ -838,6 +847,7 @@ const th: Strings = {
       name: "Real-Time Telemetry Monitoring",
       meta: "สิทธิบัตร · WO/2020/027931",
       desc: "สิทธิบัตรที่ได้รับอนุมัติสำหรับเครื่องมือติดตาม telemetry แบบเรียลไทม์ ยื่นในปี 2018 ระหว่างที่ผมทำงานในวงการ",
+      linkLabel: "ดูข้อมูลสิทธิบัตร →",
     },
     distributed: {
       name: "Distributed Learning System",

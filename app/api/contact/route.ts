@@ -1,19 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
+import { rateLimit } from "@/lib/rateLimit";
 
 export const runtime = "nodejs";
 
-// Per-instance rate limiter.
+// Rate limit each visitor. Backed by Upstash Redis when configured (shared
+// across serverless instances), with an in-memory fallback for local dev.
 const WINDOW_MS = 60_000;
 const MAX_PER_WINDOW = 5;
-const hits = new Map<string, number[]>();
-
-function rateLimited(ip: string): boolean {
-  const now = Date.now();
-  const recent = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
-  recent.push(now);
-  hits.set(ip, recent);
-  return recent.length > MAX_PER_WINDOW;
-}
 
 function isEmail(v: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -22,10 +15,15 @@ function isEmail(v: string): boolean {
 export async function POST(req: NextRequest) {
   const ip =
     req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
-  if (rateLimited(ip)) {
+  const limit = await rateLimit(ip, {
+    windowMs: WINDOW_MS,
+    max: MAX_PER_WINDOW,
+    prefix: "contact",
+  });
+  if (limit.limited) {
     return NextResponse.json(
       { error: "Too many messages. Please try again shortly." },
-      { status: 429 },
+      { status: 429, headers: { "Retry-After": String(limit.retryAfter) } },
     );
   }
 
@@ -78,9 +76,19 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  // Fallback when no delivery backend is configured: record server-side so the
-  // form is functional in development. Configure RESEND_API_KEY, CONTACT_TO_EMAIL,
-  // and CONTACT_FROM_EMAIL for real delivery in production.
+  // No delivery backend configured. In production, fail loudly rather than
+  // telling the visitor their message was sent and silently dropping it.
+  // Configure RESEND_API_KEY, CONTACT_TO_EMAIL, and CONTACT_FROM_EMAIL for
+  // real delivery.
+  if (process.env.NODE_ENV === "production") {
+    console.error("[contact] dropped submission: delivery is not configured");
+    return NextResponse.json(
+      { error: "The contact form is not set up yet. Please reach out on LinkedIn instead." },
+      { status: 503 },
+    );
+  }
+
+  // Development fallback: record server-side so the form is testable locally.
   console.log("[contact] submission", { name, email, message });
   return NextResponse.json({ ok: true });
 }

@@ -85,35 +85,37 @@ export function Teaching() {
 
         {/* Q&A flip-card widget */}
         <div className="rounded-[16px] bg-ink p-[26px] text-paper">
-          <div className="mb-[6px] font-mono text-[10px] font-medium uppercase leading-none tracking-[0.12em] text-[#9a9285]">
+          <div className="mb-[6px] font-mono text-[10px] font-medium uppercase leading-none tracking-[0.12em] text-on-ink-muted">
             {teaching.widgetTitle}
           </div>
-          <div className="mb-5 font-mono text-[12px] text-[#7d766a]">
+          <div className="mb-5 font-mono text-[12px] text-on-ink-faint">
             {teaching.cardCounter(card + 1, flashcards.length)}
           </div>
-          <div
-            className="mb-[18px] cursor-pointer [perspective:1200px]"
+          <button
+            type="button"
+            aria-expanded={flipped}
             onClick={() => setFlipped((f) => !f)}
+            className="mb-[18px] block w-full cursor-pointer border-none bg-transparent p-0 text-left [perspective:1200px]"
           >
             <div
               className="flip3d relative grid min-h-[200px] w-full"
               style={{ transform: flipped ? "rotateY(180deg)" : "none" }}
             >
               {/* Front */}
-              <div className="flex flex-col justify-center rounded-[12px] border border-[rgba(244,241,234,0.14)] bg-[#2a2620] p-[22px] [grid-area:1/1] sm:p-[26px]">
+              <div className="flex flex-col justify-center rounded-[12px] border border-on-ink-border bg-ink-raised p-[22px] [grid-area:1/1] sm:p-[26px]">
                 <div className="mb-[14px] font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-accent2">
                   {teaching.prompt}
                 </div>
                 <div className="font-body text-[20px] leading-[1.3] text-paper sm:text-[24px]">
                   {cur.front}
                 </div>
-                <div className="mt-[18px] font-mono text-[11px] text-[#7d766a]">
+                <div className="mt-[18px] font-mono text-[11px] text-on-ink-faint">
                   {teaching.tapToReveal}
                 </div>
               </div>
               {/* Back */}
               <div className="flex flex-col justify-center rounded-[12px] bg-accent2 p-[22px] text-ink [grid-area:1/1] [transform:rotateY(180deg)] sm:p-[26px]">
-                <div className="mb-[14px] font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-[#7a2f13]">
+                <div className="mb-[14px] font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-ink">
                   {teaching.answer}
                 </div>
                 <div className="font-body text-[17px] leading-[1.45] sm:text-[19px]">
@@ -121,17 +123,17 @@ export function Teaching() {
                 </div>
               </div>
             </div>
-          </div>
+          </button>
           <div className="flex gap-[10px]">
             <button
               onClick={prev}
-              className="flex-1 rounded-full border border-[rgba(244,241,234,0.28)] bg-transparent p-[11px] font-display text-[13px] font-medium text-paper"
+              className="flex-1 rounded-full border border-[rgba(244,241,234,0.28)] bg-transparent p-[11px] font-display text-[13px] font-medium text-paper transition-colors hover:bg-white/10"
             >
               {teaching.prev}
             </button>
             <button
               onClick={next}
-              className="flex-1 rounded-full border-none bg-paper p-[11px] font-display text-[13px] font-medium text-ink"
+              className="flex-1 rounded-full border-none bg-paper p-[11px] font-display text-[13px] font-medium text-ink transition-opacity hover:opacity-85"
             >
               {teaching.next}
             </button>

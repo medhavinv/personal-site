@@ -31,7 +31,7 @@ export function Work() {
                 className={`rounded-full px-[13px] py-2 font-mono text-[12px] font-medium transition-all duration-150 ${
                   isActive
                     ? "border border-ink bg-ink text-paper"
-                    : "border border-[rgba(30,27,22,0.24)] bg-transparent text-ink"
+                    : "border border-[rgba(30,27,22,0.24)] bg-transparent text-ink hover:border-ink"
                 }`}
               >
                 {work.filterLabels[k] ?? k}
@@ -55,11 +55,14 @@ export function Work() {
                   }}
                 />
                 <div className="overflow-hidden rounded-[12px] border border-hairline-strong bg-surface">
-                  <div
+                  <button
+                    type="button"
+                    aria-expanded={open}
+                    aria-controls={`role-panel-${r.id}`}
                     onClick={() =>
                       setOpenRole((cur) => (cur === r.id ? null : r.id))
                     }
-                    className="flex cursor-pointer items-start justify-between gap-5 px-[26px] py-[22px]"
+                    className="flex w-full cursor-pointer items-start justify-between gap-5 border-none bg-transparent px-[26px] py-[22px] text-left font-body text-ink"
                   >
                     <div className="flex-1">
                       <div className="mb-2 flex flex-wrap items-center gap-3">
@@ -73,15 +76,19 @@ export function Work() {
                       <div className="mb-2 font-display text-[14px] font-medium text-ink2">
                         {r.title}
                       </div>
-                      <div className="max-w-[64ch] font-body text-[16px] leading-[1.5] text-[#5c554a]">
+                      <div className="max-w-[64ch] font-body text-[16px] leading-[1.5] text-muted">
                         {r.summary}
                       </div>
                     </div>
-                    <div className="w-6 flex-none text-center font-display text-[30px] font-light leading-[0.7] text-accent">
+                    <div
+                      aria-hidden="true"
+                      className="w-6 flex-none text-center font-display text-[30px] font-light leading-[0.7] text-accent"
+                    >
                       {open ? "–" : "+"}
                     </div>
-                  </div>
+                  </button>
                   <div
+                    id={`role-panel-${r.id}`}
                     className="overflow-hidden"
                     style={{
                       maxHeight: open ? "620px" : "0",

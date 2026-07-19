@@ -37,9 +37,9 @@ export function Projects() {
                 href={b.link}
                 target="_blank"
                 rel="noopener"
-                className="mt-[14px] font-mono text-[13px] font-medium text-accent"
+                className="mt-[14px] font-mono text-[13px] font-medium text-accent transition-opacity hover:opacity-75"
               >
-                {projects.visitSite}
+                {b.linkLabel ?? projects.visitSite}
               </a>
             )}
           </div>

@@ -97,7 +97,7 @@ export function Journey() {
         {/* Map (full width, stacked above the detail card so the globe is large).
             slice fills the card and crops the poles; the cities stay centered so
             all four dots remain in frame at every width. */}
-        <div className="relative h-[188px] w-full overflow-hidden rounded-[12px] border border-hairline-strong bg-surface sm:h-[340px] md:h-[520px]">
+        <div className="relative h-[210px] w-full overflow-hidden rounded-[12px] border border-hairline-strong bg-surface sm:h-[340px] md:h-[520px]">
           {mapReady && (
             <svg
               viewBox={`0 0 ${MAP_W} ${MAP_H}`}
@@ -142,8 +142,17 @@ export function Journey() {
                 return (
                   <g
                     key={c.id}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`${c.name}, ${c.country}`}
                     onClick={() => setActiveCity(c.id)}
-                    className="cursor-pointer"
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setActiveCity(c.id);
+                      }
+                    }}
+                    className="cursor-pointer focus:outline-none focus-visible:[&>circle]:stroke-accent"
                   >
                     <circle
                       cx={p.x}
@@ -164,6 +173,7 @@ export function Journey() {
                       style={{ transition: "all .2s" }}
                     />
                     <text
+                      className="max-sm:hidden"
                       x={labelX}
                       y={top ? p.y - 18 : p.y + 28}
                       textAnchor={anchor}
@@ -197,12 +207,12 @@ export function Journey() {
               <div className="mb-1 font-display text-[28px] font-semibold leading-[1.1]">
                 {active.name}
               </div>
-              <div className="font-mono text-[13px] font-normal text-[#9a9285]">
+              <div className="font-mono text-[13px] font-normal text-on-ink-muted">
                 {active.country}
               </div>
             </div>
             <div className="flex flex-col">
-              <p className="m-0 font-body text-[18px] leading-[1.6] text-[#d8d1c4]">
+              <p className="m-0 font-body text-[18px] leading-[1.6] text-on-ink">
                 {active.text}
               </p>
               <a
