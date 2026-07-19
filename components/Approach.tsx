@@ -32,7 +32,7 @@ export function Approach() {
                 className={`rounded-[10px] px-4 py-[11px] font-display text-[14px] font-medium transition-all duration-150 ${
                   isActive
                     ? "border border-transparent bg-accent text-white"
-                    : "border border-[rgba(30,27,22,0.18)] bg-surface text-ink"
+                    : "border border-[rgba(30,27,22,0.18)] bg-surface text-ink hover:border-[rgba(30,27,22,0.45)]"
                 }`}
               >
                 {f.label}
@@ -46,10 +46,10 @@ export function Approach() {
           <div className="mb-[14px] font-display text-[24px] font-semibold leading-[1.1]">
             {facet.label}
           </div>
-          <p className="m-0 mb-5 max-w-[70ch] font-body text-[18px] leading-[1.55] text-[#d8d1c4]">
+          <p className="m-0 mb-5 max-w-[70ch] font-body text-[18px] leading-[1.55] text-on-ink">
             {facet.blurb}
           </p>
-          <div className="border-t border-[rgba(244,241,234,0.16)] pt-[18px]">
+          <div className="border-t border-on-ink-border pt-[18px]">
             <div className="mb-[10px] font-mono text-[10px] font-medium uppercase leading-none tracking-[0.1em] text-accent2">
               {approach.inPractice}
             </div>

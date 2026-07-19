@@ -15,7 +15,22 @@ export function Chat() {
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [contactInView, setContactInView] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
+
+  // On small screens the launcher sits over the contact form's submit button,
+  // so hide it (when the panel is closed) while the contact section is on
+  // screen. Desktop has room, so it stays.
+  useEffect(() => {
+    const contact = document.getElementById("contact");
+    if (!contact) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setContactInView(entry.isIntersecting),
+      { threshold: 0.1 },
+    );
+    observer.observe(contact);
+    return () => observer.disconnect();
+  }, []);
 
   const showSuggestions = messages.length <= 1;
 
@@ -162,13 +177,32 @@ export function Chat() {
         </div>
       )}
 
+      {/* Full pill from sm up; a compact circle on phones, hidden there while
+          the contact section is visible so it never covers the send button. */}
       <button
         onClick={toggle}
         aria-label={chat.launcherLabel}
-        className="flex cursor-pointer items-center gap-[10px] rounded-full border-none bg-ink px-[22px] py-[14px] font-display text-[14px] font-medium text-paper shadow-[0_12px_30px_rgba(20,18,30,.28)]"
+        className={`flex cursor-pointer items-center justify-center rounded-full border-none bg-ink font-display text-[14px] font-medium text-paper shadow-[0_12px_30px_rgba(20,18,30,.28)] transition-opacity hover:opacity-90 max-sm:h-[52px] max-sm:w-[52px] sm:gap-[10px] sm:px-[22px] sm:py-[14px] ${
+          contactInView && !open ? "max-sm:hidden" : ""
+        }`}
       >
-        <span className="inline-block h-2 w-2 rounded-full bg-accent" />
-        {chat.launcherLabel}
+        <span className="inline-block h-2 w-2 rounded-full bg-accent max-sm:hidden" />
+        <span className="max-sm:sr-only">{chat.launcherLabel}</span>
+        <svg
+          className="sm:hidden"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M21 12a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-2.9-.37-4.1-1.03L3 21l1.53-5.4A8.5 8.5 0 1 1 21 12z"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinejoin="round"
+          />
+        </svg>
       </button>
     </div>
   );

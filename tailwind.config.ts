@@ -28,6 +28,11 @@ const config: Config = {
         "accent-border": "var(--accent-border)",
         hairline: "var(--hairline)",
         "hairline-strong": "var(--hairline-strong)",
+        "on-ink": "var(--on-ink)",
+        "on-ink-muted": "var(--on-ink-muted)",
+        "on-ink-faint": "var(--on-ink-faint)",
+        "on-ink-border": "var(--on-ink-border)",
+        "ink-raised": "var(--ink-raised)",
       },
       fontFamily: {
         display: [

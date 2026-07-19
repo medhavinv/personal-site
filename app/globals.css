@@ -18,7 +18,7 @@
   --ink: #161824;
   --ink2: #363a49;
   --muted: #656977;
-  --faint: #878b99;
+  --faint: #6e7382;
   --accent: #4457c7;
   --accent2: #8092f2;
   --accent-soft: rgba(68, 87, 199, 0.12);
@@ -35,7 +35,7 @@
   --ink: #191b18;
   --ink2: #3a3d37;
   --muted: #6a6d64;
-  --faint: #8a8d83;
+  --faint: #70746a;
   --accent: #3f7a68;
   --accent2: #63a891;
   --accent-soft: rgba(63, 122, 104, 0.12);
@@ -52,7 +52,7 @@
   --ink: #1e1b16;
   --ink2: #39332b;
   --muted: #6b6459;
-  --faint: #8b8479;
+  --faint: #726b60;
   --accent: #b5502e;
   --accent2: #e0703f;
   --accent-soft: rgba(181, 80, 46, 0.12);
@@ -69,7 +69,7 @@
   --ink: #1f191d;
   --ink2: #3f363c;
   --muted: #6c6167;
-  --faint: #8c818a;
+  --faint: #736972;
   --accent: #8a3d6b;
   --accent2: #c471a2;
   --accent-soft: rgba(138, 61, 107, 0.12);
@@ -86,7 +86,7 @@
   --ink: #151618;
   --ink2: #3a3b3d;
   --muted: #67696c;
-  --faint: #898b8e;
+  --faint: #6f7276;
   --accent: #2b2d30;
   --accent2: #6b6f74;
   --accent-soft: rgba(43, 45, 48, 0.12);
@@ -94,6 +94,19 @@
   --accent-border: rgba(43, 45, 48, 0.4);
   --hairline: rgba(30, 27, 22, 0.12);
   --hairline-strong: rgba(30, 27, 22, 0.16);
+}
+
+/*
+  On-dark text tones, derived from the active palette so dark cards stay
+  coherent across all five palettes. color-mix resolves against the current
+  --paper/--ink values, so a single declaration covers every palette.
+*/
+:root {
+  --on-ink: color-mix(in srgb, var(--paper) 90%, var(--ink));
+  --on-ink-muted: color-mix(in srgb, var(--paper) 62%, var(--ink));
+  --on-ink-faint: color-mix(in srgb, var(--paper) 46%, var(--ink));
+  --on-ink-border: color-mix(in srgb, var(--paper) 15%, transparent);
+  --ink-raised: color-mix(in srgb, var(--ink) 90%, var(--paper));
 }
 
 html {
