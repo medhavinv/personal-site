@@ -43,13 +43,13 @@ export function Work() {
 
       <div className="relative">
         <div className="absolute bottom-2 left-[7px] top-2 w-px bg-[rgba(30,27,22,0.18)]" />
-        <div className="flex flex-col gap-[14px]">
+        <div className="flex flex-col gap-[10px]">
           {visible.map((r) => {
             const open = openRole === r.id;
             return (
               <div key={r.id} className="relative pl-[34px]">
                 <span
-                  className="absolute left-0 top-[26px] h-[15px] w-[15px] rounded-full bg-paper transition-colors duration-200"
+                  className="absolute left-0 top-[22px] h-[15px] w-[15px] rounded-full bg-paper transition-colors duration-200"
                   style={{
                     border: `3px solid ${open ? "var(--accent)" : "var(--ink)"}`,
                   }}
@@ -62,10 +62,10 @@ export function Work() {
                     onClick={() =>
                       setOpenRole((cur) => (cur === r.id ? null : r.id))
                     }
-                    className="flex w-full cursor-pointer items-start justify-between gap-5 border-none bg-transparent px-[26px] py-[22px] text-left font-body text-ink"
+                    className="flex w-full cursor-pointer items-start justify-between gap-5 border-none bg-transparent px-[24px] py-[18px] text-left font-body text-ink"
                   >
                     <div className="flex-1">
-                      <div className="mb-2 flex flex-wrap items-center gap-3">
+                      <div className="mb-[5px] flex flex-wrap items-center gap-x-3 gap-y-1">
                         <span className="font-display text-[19px] font-semibold">
                           {r.co}
                         </span>
@@ -73,10 +73,10 @@ export function Work() {
                           {r.years} · {r.loc}
                         </span>
                       </div>
-                      <div className="mb-2 font-display text-[14px] font-medium text-ink2">
+                      <div className="mb-[6px] font-display text-[14px] font-medium text-ink2">
                         {r.title}
                       </div>
-                      <div className="max-w-[64ch] font-body text-[16px] leading-[1.5] text-muted">
+                      <div className="max-w-[64ch] font-body text-[15px] leading-[1.5] text-muted">
                         {r.summary}
                       </div>
                     </div>
@@ -96,8 +96,8 @@ export function Work() {
                       transition: "max-height .5s ease, opacity .35s ease",
                     }}
                   >
-                    <div className="px-[26px] pb-6">
-                      <ul className="mb-0 mt-[6px] list-disc border-t border-hairline pl-[18px] pt-[18px]">
+                    <div className="px-[24px] pb-[22px]">
+                      <ul className="mb-0 mt-1 list-disc border-t border-hairline pl-[18px] pt-4">
                         {r.bullets.map((b, i) => (
                           <li
                             key={i}

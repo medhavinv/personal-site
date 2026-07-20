@@ -2,6 +2,7 @@ import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { Journey } from "@/components/Journey";
 import { Approach } from "@/components/Approach";
+import { Logos } from "@/components/Logos";
 import { Work } from "@/components/Work";
 import { Teaching } from "@/components/Teaching";
 import { Projects } from "@/components/Projects";
@@ -19,6 +20,7 @@ export default function Home() {
       <main className="relative z-10 mx-auto max-w-content px-8">
         <Hero />
         <Approach />
+        <Logos />
         <Work />
         <Journey />
         <Teaching />
