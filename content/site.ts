@@ -247,11 +247,11 @@ const en: Strings = {
     headingBefore: "Technical ",
     headingAccent: "&",
     headingAfter: " strategic product manager.",
-    lead: "Hi there! I'm Vin, a product manager who likes technical platforms and ambiguous product problems. I've worked at large tech companies like Microsoft, Lyft, and Asana, and more recently I've been building in the startup space. I love building tools that help people do their work more efficiently, across data platforms, legal tech and compliance, and developer tools.",
+    lead: "Hi there! I'm Vin, a product manager who likes technical platforms and ambiguous product problems. I've worked at large tech companies like Microsoft, Lyft, and Asana, and more recently at startups like Modern Treasury, Vanta, and Atlan. I love building tools that help people do their work more efficiently, across data platforms, legal tech and compliance, and developer tools.",
     primaryCta: "See my work ↓",
     secondaryCta: "Get in touch →",
     facts: [
-      { label: "Role", value: "Staff Product Manager" },
+      { label: "Most recent", value: "Staff Product Manager" },
       { label: "Based", value: "Seattle, USA" },
       { label: "From", value: "Bangkok, Thailand" },
     ],
@@ -288,9 +288,9 @@ const en: Strings = {
     seattle: {
       name: "Seattle",
       country: "USA",
-      kicker: "Now",
+      kicker: "Today",
       years: "2022 – now",
-      text: "I worked at Modern Treasury and Vanta, and most recently as a Staff PM at Atlan, where I build compliance platforms, integrations, and AI infrastructure.",
+      text: "I worked at Modern Treasury and Vanta, and most recently as a Staff PM at Atlan, where I built compliance platforms, integrations, and AI infrastructure.",
       linkLabel: "See work →",
     },
   },
@@ -337,7 +337,7 @@ const en: Strings = {
   },
   work: {
     kicker: "02 · Professional work",
-    heading: "A decade of shipping.",
+    heading: "Over a decade of shipping.",
     filterLabels: {
       All: "All",
       AI: "AI",
@@ -356,7 +356,7 @@ const en: Strings = {
       summary:
         "At this Series C startup building an AI context layer for data, I led strategy and roadmap for its AI infrastructure, AI agent interfaces, developer tools, frameworks, and CLI.",
       bullets: [
-        "Led strategy and roadmap for AI infrastructure, AI agent interfaces, developer tools, frameworks, and CLI, which reduced app and integration build and deployment time from days to minutes.",
+        "Reduced app and integration build and deployment time from days to minutes.",
       ],
       metrics: ["Days → minutes", "AI agent interfaces"],
     },
@@ -500,7 +500,7 @@ const en: Strings = {
     teach4: "Students at the bootcamp",
   },
   projects: {
-    kicker: "05 · Things I've built",
+    kicker: "05 · Projects",
     heading: "Things I've built.",
     intro:
       "A mix of side projects, university work, and things I shipped on the job. Patents, platforms, and tools I built to close a real gap.",
@@ -595,14 +595,14 @@ const th: Strings = {
   },
   langLabel: "ภาษา",
   hero: {
-    headingBefore: "Product Manager ",
-    headingAccent: "สาย",
-    headingAfter: "เทคนิคและกลยุทธ์",
-    lead: "สวัสดีครับ ผมวิน เป็น product manager ที่ชอบงานแพลตฟอร์มเชิงเทคนิคและโจทย์ผลิตภัณฑ์ที่ยังไม่ชัดเจน ผมเคยทำงานกับบริษัทเทคโนโลยีขนาดใหญ่อย่าง Microsoft, Lyft และ Asana และช่วงหลังผมมาสร้างผลิตภัณฑ์ในโลกสตาร์ทอัพ ผมชอบสร้างเครื่องมือที่ช่วยให้คนทำงานได้มีประสิทธิภาพมากขึ้น ทั้งด้านแพลตฟอร์มข้อมูล เทคโนโลยีกฎหมายและการกำกับดูแล และเครื่องมือสำหรับนักพัฒนา",
+    headingBefore: "Product Manager สายเทคนิค",
+    headingAccent: "และ",
+    headingAfter: "กลยุทธ์",
+    lead: "สวัสดีครับ ผมวิน เป็น product manager ที่ชอบงานแพลตฟอร์มเชิงเทคนิคและโจทย์ผลิตภัณฑ์ที่ยังไม่ชัดเจน ผมเคยทำงานกับบริษัทเทคโนโลยีขนาดใหญ่อย่าง Microsoft, Lyft และ Asana และช่วงหลังผมมาสร้างซอฟต์แวร์ที่สตาร์ทอัพอย่าง Modern Treasury, Vanta และ Atlan ผมชอบสร้างเครื่องมือที่ช่วยให้คนทำงานได้มีประสิทธิภาพมากขึ้น ทั้งด้านแพลตฟอร์มข้อมูล เทคโนโลยีกฎหมายและการปฏิบัติตามกฎหมาย และเครื่องมือสำหรับนักพัฒนา",
     primaryCta: "ดูผลงานของผม ↓",
     secondaryCta: "ติดต่อผม →",
     facts: [
-      { label: "ตำแหน่ง", value: "Staff Product Manager" },
+      { label: "ตำแหน่งล่าสุด", value: "Staff Product Manager" },
       { label: "อยู่ที่", value: "ซีแอตเทิล สหรัฐอเมริกา" },
       { label: "มาจาก", value: "กรุงเทพฯ ประเทศไทย" },
     ],
@@ -641,7 +641,7 @@ const th: Strings = {
       country: "สหรัฐอเมริกา",
       kicker: "ปัจจุบัน",
       years: "2022 – ปัจจุบัน",
-      text: "ผมเคยทำงานที่ Modern Treasury และ Vanta และล่าสุดเป็น Staff PM ที่ Atlan ซึ่งผมสร้างแพลตฟอร์มด้านการกำกับดูแล การเชื่อมต่อระบบ และโครงสร้างพื้นฐานด้าน AI",
+      text: "ผมเคยทำงานที่ Modern Treasury และ Vanta และล่าสุดเป็น Staff PM ที่ Atlan ซึ่งผมได้สร้างแพลตฟอร์มด้านการปฏิบัติตามกฎหมาย การเชื่อมต่อระบบ และโครงสร้างพื้นฐานด้าน AI",
       linkLabel: "ดูประสบการณ์ →",
     },
   },
@@ -655,7 +655,7 @@ const th: Strings = {
   logos: {
     overline: "ที่ที่ผมเคยสร้าง",
     tagline:
-      "ผมเรียนรู้การสร้างผลิตภัณฑ์ในสเกลใหญ่จากบริษัทเทคโนโลยีชั้นนำ และตอนนี้ผมสร้างผลิตภัณฑ์แบบ 0-to-1 ในสตาร์ทอัพ",
+      "ผมเรียนรู้การสร้างซอฟต์แวร์ในสเกลใหญ่จากบริษัทเทคโนโลยีชั้นนำ และตอนนี้ผมสร้างซอฟต์แวร์แบบ 0-to-1 ในสตาร์ทอัพ",
   },
   facets: {
     technical: {
@@ -688,11 +688,11 @@ const th: Strings = {
   },
   work: {
     kicker: "02 · ประสบการณ์ทำงาน",
-    heading: "หนึ่งทศวรรษของการส่งมอบงาน",
+    heading: "กว่าหนึ่งทศวรรษของการส่งมอบงาน",
     filterLabels: {
       All: "ทั้งหมด",
       AI: "AI",
-      Compliance: "การกำกับดูแล",
+      Compliance: "การปฏิบัติตามกฎหมาย",
       Data: "ข้อมูล",
       "Dev Tools": "เครื่องมือนักพัฒนา",
       Infra: "โครงสร้างพื้นฐาน",
@@ -707,7 +707,7 @@ const th: Strings = {
       summary:
         "ที่สตาร์ทอัพระดับ Series C ที่สร้าง AI context layer สำหรับข้อมูล ผมนำกลยุทธ์และแผนงานสำหรับโครงสร้างพื้นฐานด้าน AI, อินเทอร์เฟซของ AI agent, เครื่องมือนักพัฒนา, เฟรมเวิร์ก และ CLI",
       bullets: [
-        "นำกลยุทธ์และแผนงานสำหรับโครงสร้างพื้นฐานด้าน AI, อินเทอร์เฟซของ AI agent, เครื่องมือนักพัฒนา, เฟรมเวิร์ก และ CLI ซึ่งลดเวลา build และ deploy ของแอปและการเชื่อมต่อจากหลายวันเหลือไม่กี่นาที",
+        "ลดเวลา build และ deploy ของแอปและการเชื่อมต่อจากหลายวันเหลือไม่กี่นาที",
       ],
       metrics: ["หลายวันเหลือนาที", "อินเทอร์เฟซ AI agent"],
     },
@@ -717,7 +717,7 @@ const th: Strings = {
       loc: "ซีแอตเทิล",
       years: "2023 – 2024",
       summary:
-        "ที่ยูนิคอร์นด้านความปลอดภัยและ compliance ผมดูแลกลยุทธ์ของแพลตฟอร์มเก็บหลักฐานอัตโนมัติ และเปิดตัวการทดสอบและการเชื่อมต่อแบบกำหนดเองรายแรกของวงการ โดยใช้ AI ทำให้การแก้ไขเร็วขึ้น",
+        "ที่ยูนิคอร์นด้านความปลอดภัยและการปฏิบัติตามกฎหมาย ผมดูแลกลยุทธ์ของแพลตฟอร์มเก็บหลักฐานอัตโนมัติ และเปิดตัวการทดสอบและการเชื่อมต่อแบบกำหนดเองรายแรกของวงการ โดยใช้ AI ทำให้การแก้ไขเร็วขึ้น",
       bullets: [
         "กำหนดและดำเนินกลยุทธ์ผลิตภัณฑ์สำหรับแพลตฟอร์มเก็บหลักฐานอัตโนมัติของ Vanta โดยประสานงานข้ามทีมทั้งผู้บริหาร วิศวกรรม และดีไซน์",
         "นำการค้นคว้าและเปิดตัวแบบ 0 ถึง 1 ของการทดสอบและการเชื่อมต่อแบบกำหนดเองรายแรกของวงการ ที่ให้ลูกค้าตรวจสอบมาตรฐานใดก็ได้บน Vanta และขยายตลาด",
@@ -732,12 +732,12 @@ const th: Strings = {
       loc: "ซีแอตเทิล",
       years: "2022 – 2023",
       summary:
-        "ที่ยูนิคอร์นด้านการชำระเงินและฟินเทค ผมวางแผนงานสำหรับโครงสร้างพื้นฐาน ความปลอดภัย compliance และเครื่องมือนักพัฒนา",
+        "ที่ยูนิคอร์นด้านการชำระเงินและฟินเทค ผมวางแผนงานสำหรับโครงสร้างพื้นฐาน ความปลอดภัย การปฏิบัติตามกฎหมาย และเครื่องมือนักพัฒนา",
       bullets: [
-        "ร่วมงานกับธนาคารและทีมขายเพื่อประเมินผลกระทบด้านการสร้างรายได้ ธุรกิจ และผลิตภัณฑ์ จากความน่าเชื่อถือที่สูงขึ้นและมาตรฐานการกำกับดูแลทางการเงินใหม่",
-        "กำหนดแผนงานสำหรับโครงสร้างพื้นฐาน ความปลอดภัย การกำกับดูแล และเครื่องมือพัฒนาซอฟต์แวร์ของ Modern Treasury",
+        "ร่วมงานกับธนาคารและทีมขายเพื่อประเมินผลกระทบด้านการสร้างรายได้ ธุรกิจ และผลิตภัณฑ์ จากความน่าเชื่อถือที่สูงขึ้นและมาตรฐานการปฏิบัติตามกฎหมายทางการเงินใหม่",
+        "กำหนดแผนงานสำหรับโครงสร้างพื้นฐาน ความปลอดภัย การปฏิบัติตามกฎหมาย และเครื่องมือพัฒนาซอฟต์แวร์ของ Modern Treasury",
       ],
-      metrics: ["การกำกับดูแลฟินเทค", "ความร่วมมือกับธนาคาร"],
+      metrics: ["การปฏิบัติตามกฎหมายฟินเทค", "ความร่วมมือกับธนาคาร"],
     },
     asana: {
       co: "Asana",
@@ -798,7 +798,7 @@ const th: Strings = {
     },
     uoft: {
       co: "University of Toronto",
-      title: "วิศวกรรมคอมพิวเตอร์ (เกียรตินิยม) โทสาขาบริหารวิศวกรรม",
+      title: "ปริญญาตรีวิศวกรรมคอมพิวเตอร์ (เกียรตินิยม) วิชาโทด้านธุรกิจวิศวกรรม",
       loc: "โทรอนโต",
       years: "2008 – 2012",
       summary:
@@ -815,7 +815,7 @@ const th: Strings = {
     heading: "หนึ่งสัปดาห์ต่อปี กลับเข้าห้องเรียนอีกครั้ง",
     paragraphs: [
       "ทุกปีผมกลับกรุงเทพฯ หนึ่งสัปดาห์เพื่อสอนใน{strong}หลักสูตร LLBel ที่จุฬาลงกรณ์มหาวิทยาลัย{/strong} ซึ่งเป็นบูตแคมป์เข้มข้นสำหรับนักศึกษากฎหมาย ผมสอนเรื่องการบริหารผลิตภัณฑ์ การคิดเชิงออกแบบ และการทำงานของวงการเทคโนโลยี เพื่อให้นักกฎหมายและผู้กำกับดูแลในอนาคตเข้าใจระบบที่พวกเขาจะให้คำปรึกษาและกำกับดูแล",
-      "ต่อเนื่องมาสี่ปีแล้ว มันใช้กล้ามเนื้อชุดเดียวกับงานผลิตภัณฑ์ คือการหยิบเรื่องที่ซับซ้อนมาทำให้อีกคนเข้าใจได้",
+      "ต่อเนื่องมาสี่ปีแล้ว งานสอนใช้ทักษะเดียวกับงานผลิตภัณฑ์ คือการหยิบเรื่องซับซ้อนมาทำให้อีกคนเข้าใจได้",
     ],
     widgetTitle: "บรรยากาศของบูตแคมป์",
     galleryLabel: "จากในห้องเรียน",
@@ -851,7 +851,7 @@ const th: Strings = {
     teach4: "นักศึกษาในบูตแคมป์",
   },
   projects: {
-    kicker: "05 · สิ่งที่ผมสร้าง",
+    kicker: "05 · โปรเจกต์",
     heading: "สิ่งที่ผมสร้าง",
     intro:
       "ทั้งโปรเจกต์ส่วนตัว งานสมัยเรียน และสิ่งที่ผมส่งมอบในงานประจำ ทั้งสิทธิบัตร แพลตฟอร์ม และเครื่องมือที่ผมสร้างเพื่อปิดช่องว่างที่มีอยู่จริง",
@@ -895,17 +895,17 @@ const th: Strings = {
     heading: "มาสร้างอะไรสักอย่างด้วยกัน",
     intro:
       "มีโจทย์ที่ยังไม่ชัดเจนและลึกเชิงเทคนิค ที่ต้องการ PM ที่ยืดหยุ่นและทำได้หลายด้านไหม? ผมอยากรับฟังครับ",
-    linkedinRowLabel: "ลิงก์อิน",
+    linkedinRowLabel: "LinkedIn",
     basedRowLabel: "อยู่ที่",
-    based: "ซีแอตเทิล สหรัฐอเมริกา · พร้อมย้ายที่อยู่",
+    based: "ซีแอตเทิล สหรัฐอเมริกา · พร้อมย้ายถิ่นฐาน",
     nameLabel: "ชื่อ",
     emailLabel: "อีเมล",
     messageLabel: "ข้อความ",
     send: "ส่งข้อความ →",
     sending: "กำลังส่ง…",
     or: "หรือ",
-    connectLinkedin: "เชื่อมต่อบน LinkedIn",
-    successHeading: (name) => `ขอบคุณครับ คุณ${name}`,
+    connectLinkedin: "ติดต่อผ่าน LinkedIn",
+    successHeading: (name) => `ขอบคุณครับ คุณ ${name}`,
     successBody: "ผมจะติดต่อกลับโดยเร็วครับ",
     errorGeneric: "เกิดข้อผิดพลาดบางอย่าง กรุณาลองผ่าน LinkedIn แทน",
   },
@@ -920,7 +920,7 @@ const th: Strings = {
     suggested: [
       "ประสบการณ์ที่เชิงเทคนิคที่สุดของเขาคืออะไร?",
       "ผลงานประหยัดต้นทุนที่ใหญ่ที่สุดคืออะไร?",
-      "เขาเคยทำผลิตภัณฑ์ด้านการกำกับดูแลไหม?",
+      "เขาเคยทำผลิตภัณฑ์ด้านการปฏิบัติตามกฎหมายไหม?",
       "เล่าเรื่องประสบการณ์ด้าน AI ของเขาหน่อย",
     ],
     errorReply:
