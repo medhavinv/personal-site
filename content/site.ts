@@ -291,7 +291,7 @@ const en: Strings = {
     },
   },
   approach: {
-    kicker: "01 · The role",
+    kicker: "01 · Approach",
     heading: "What does a product manager actually do?",
     intro:
       "A PM turns technical and business judgment, data, and customer insight into strategy, execution, and alignment, so the work reaches customers as real impact.",
@@ -633,7 +633,7 @@ const th: Strings = {
     },
   },
   approach: {
-    kicker: "01 · บทบาท",
+    kicker: "01 · แนวทาง",
     heading: "จริง ๆ แล้ว product manager ทำอะไรบ้าง?",
     intro:
       "PM เปลี่ยนวิจารณญาณด้านเทคนิคและธุรกิจ ข้อมูล และความเข้าใจลูกค้า ให้กลายเป็นกลยุทธ์ การลงมือทำ และการทำให้ทุกฝ่ายไปในทิศทางเดียวกัน เพื่อให้งานส่งถึงมือลูกค้าเป็นผลลัพธ์ที่จับต้องได้จริง",

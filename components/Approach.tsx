@@ -16,7 +16,7 @@ export function Approach() {
       <h2 className="mb-3 mt-0 max-w-[20ch] font-display text-[34px] font-semibold leading-[1.1] tracking-[-0.02em]">
         {approach.heading}
       </h2>
-      <p className="mb-9 mt-0 max-w-[64ch] font-body text-[19px] leading-[1.6] text-ink2">
+      <p className="mb-9 mt-0 max-w-[70ch] font-body text-[19px] leading-[1.6] text-ink2">
         {approach.intro}
       </p>
 
