@@ -16,7 +16,7 @@ export function Approach() {
       <h2 className="mb-3 mt-0 max-w-[20ch] font-display text-[34px] font-semibold leading-[1.1] tracking-[-0.02em]">
         {approach.heading}
       </h2>
-      <p className="mb-9 mt-0 max-w-[64ch] font-body text-[19px] leading-[1.6] text-ink2">
+      <p className="mb-9 mt-0 max-w-[70ch] font-body text-[19px] leading-[1.6] text-ink2">
         {approach.intro}
       </p>
 
@@ -41,19 +41,23 @@ export function Approach() {
           })}
         </div>
 
-        {/* Dark strip */}
-        <div className="bg-ink px-[30px] py-7 text-paper">
-          <div className="mb-[14px] font-display text-[24px] font-semibold leading-[1.1]">
-            {facet.label}
+        {/* Dark strip: description on the left, proof on the right, so the
+            full-width box fills with two readable columns instead of a narrow
+            single column. Stacks on mobile with a top divider. */}
+        <div className="grid gap-y-6 bg-ink px-[30px] py-7 text-paper md:grid-cols-2">
+          <div className="md:pr-12">
+            <div className="mb-[14px] font-display text-[24px] font-semibold leading-[1.1]">
+              {facet.label}
+            </div>
+            <p className="m-0 font-body text-[18px] leading-[1.55] text-on-ink">
+              {facet.blurb}
+            </p>
           </div>
-          <p className="m-0 mb-5 max-w-[70ch] font-body text-[18px] leading-[1.55] text-on-ink">
-            {facet.blurb}
-          </p>
-          <div className="border-t border-on-ink-border pt-[18px]">
+          <div className="border-t border-on-ink-border pt-[18px] md:border-l md:border-t-0 md:pl-12 md:pt-0">
             <div className="mb-[10px] font-mono text-[10px] font-medium uppercase leading-none tracking-[0.1em] text-accent2">
               {approach.inPractice}
             </div>
-            <p className="m-0 max-w-[70ch] text-[15px] leading-[1.6] text-paper">
+            <p className="m-0 text-[15px] leading-[1.6] text-paper">
               {facet.proof}
             </p>
           </div>
