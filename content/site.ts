@@ -87,6 +87,20 @@ const roleMeta: { id: string; tags: string[] }[] = [
   { id: "uoft", tags: ["Education"] },
 ];
 
+// Company wordmarks for the logo strip that bridges Approach and Work. Names
+// are proper nouns and stay in Latin across locales. Order runs big tech first,
+// then startups, mirroring the tagline. `svg` can hold a real logo path per
+// company later; until then the component renders the label as a wordmark.
+const logoCompanies: { id: string; label: string; svg?: string }[] = [
+  { id: "msft", label: "Microsoft" },
+  { id: "lyft", label: "Lyft" },
+  { id: "asana", label: "Asana" },
+  { id: "motorola", label: "Motorola" },
+  { id: "mt", label: "Modern Treasury" },
+  { id: "vanta", label: "Vanta" },
+  { id: "atlan", label: "Atlan" },
+];
+
 // Build order + external links (links stay the same across locales).
 const buildMeta: { id: string; link?: string }[] = [
   { id: "lawcu", link: "https://lawcu2026.perthcha.com/" },
@@ -164,6 +178,7 @@ type Strings = {
   journey: { kicker: string; heading: string };
   cities: Record<string, { name: string; country: string; kicker: string; years: string; text: string; linkLabel: string }>;
   approach: { kicker: string; heading: string; intro: string; inPractice: string };
+  logos: { overline: string; tagline: string };
   facets: Record<string, { label: string; blurb: string; proof: string }>;
   work: { kicker: string; heading: string; filterLabels: Record<string, string> };
   roles: Record<string, { co: string; title: string; loc: string; years: string; summary: string; bullets: string[]; metrics: string[] }>;
@@ -286,6 +301,11 @@ const en: Strings = {
       "A PM turns technical and business judgment, data, and customer insight into strategy, execution, and alignment, so the work reaches customers as real impact.",
     inPractice: "In practice",
   },
+  logos: {
+    overline: "Where I've built",
+    tagline:
+      "I learned to build at scale in big tech, and now I build 0-to-1 at startups.",
+  },
   facets: {
     technical: {
       label: "Technical depth",
@@ -334,7 +354,7 @@ const en: Strings = {
       loc: "Seattle",
       years: "2025 – 2026",
       summary:
-        "Led strategy and roadmap for AI infrastructure and AI agent interfaces, plus the developer tools, frameworks, and CLI that sit on top of Atlan's data platform.",
+        "At this Series C startup building an AI context layer for data, I led strategy and roadmap for its AI infrastructure, AI agent interfaces, developer tools, frameworks, and CLI.",
       bullets: [
         "Led strategy and roadmap for AI infrastructure, AI agent interfaces, developer tools, frameworks, and CLI, which reduced app and integration build and deployment time from days to minutes.",
       ],
@@ -346,7 +366,7 @@ const en: Strings = {
       loc: "Seattle",
       years: "2023 – 2024",
       summary:
-        "Owned strategy for the automated evidence collection platform and launched the industry's first custom tests and integrations, using AI to make test remediation faster.",
+        "At this security and compliance unicorn, I owned strategy for the automated evidence collection platform and launched the industry's first custom tests and integrations, using AI to make remediation faster.",
       bullets: [
         "Defined and executed product strategy for Vanta's automated evidence collection platform, driving cross-functional alignment across leadership, engineering, and design.",
         "Led 0-to-1 discovery and launch of the industry's first custom tests and integrations, letting customers run any audit on Vanta and driving market expansion.",
@@ -361,7 +381,7 @@ const en: Strings = {
       loc: "Seattle",
       years: "2022 – 2023",
       summary:
-        "Roadmaps for infrastructure, security, compliance, and developer tooling in fintech.",
+        "At this payments and fintech unicorn, I set the roadmap for infrastructure, security, compliance, and developer tooling.",
       bullets: [
         "Partnered with banks and sales to assess the monetization, business, and product implications of higher reliability and new financial compliance standards.",
         "Defined roadmaps for Modern Treasury's infrastructure, security, compliance, and software development tools.",
@@ -632,6 +652,11 @@ const th: Strings = {
       "PM เปลี่ยนวิจารณญาณด้านเทคนิคและธุรกิจ ข้อมูล และความเข้าใจลูกค้า ให้กลายเป็นกลยุทธ์ การลงมือทำ และการทำให้ทุกฝ่ายไปในทิศทางเดียวกัน เพื่อให้งานส่งถึงมือลูกค้าเป็นผลลัพธ์ที่จับต้องได้จริง",
     inPractice: "ในทางปฏิบัติ",
   },
+  logos: {
+    overline: "ที่ที่ผมเคยสร้าง",
+    tagline:
+      "ผมเรียนรู้การสร้างผลิตภัณฑ์ในสเกลใหญ่จากบริษัทเทคโนโลยีชั้นนำ และตอนนี้ผมสร้างผลิตภัณฑ์แบบ 0-to-1 ในสตาร์ทอัพ",
+  },
   facets: {
     technical: {
       label: "ความลึกด้านเทคนิค",
@@ -680,7 +705,7 @@ const th: Strings = {
       loc: "ซีแอตเทิล",
       years: "2025 – 2026",
       summary:
-        "นำกลยุทธ์และแผนงานสำหรับโครงสร้างพื้นฐานด้าน AI และอินเทอร์เฟซของ AI agent รวมถึงเครื่องมือนักพัฒนา เฟรมเวิร์ก และ CLI ที่อยู่บนแพลตฟอร์มข้อมูลของ Atlan",
+        "ที่สตาร์ทอัพระดับ Series C ที่สร้าง AI context layer สำหรับข้อมูล ผมนำกลยุทธ์และแผนงานสำหรับโครงสร้างพื้นฐานด้าน AI, อินเทอร์เฟซของ AI agent, เครื่องมือนักพัฒนา, เฟรมเวิร์ก และ CLI",
       bullets: [
         "นำกลยุทธ์และแผนงานสำหรับโครงสร้างพื้นฐานด้าน AI, อินเทอร์เฟซของ AI agent, เครื่องมือนักพัฒนา, เฟรมเวิร์ก และ CLI ซึ่งลดเวลา build และ deploy ของแอปและการเชื่อมต่อจากหลายวันเหลือไม่กี่นาที",
       ],
@@ -692,7 +717,7 @@ const th: Strings = {
       loc: "ซีแอตเทิล",
       years: "2023 – 2024",
       summary:
-        "ดูแลกลยุทธ์ของแพลตฟอร์มเก็บหลักฐานอัตโนมัติ และเปิดตัวการทดสอบและการเชื่อมต่อแบบกำหนดเองรายแรกของวงการ โดยใช้ AI ทำให้การแก้ไขการทดสอบเร็วขึ้น",
+        "ที่ยูนิคอร์นด้านความปลอดภัยและ compliance ผมดูแลกลยุทธ์ของแพลตฟอร์มเก็บหลักฐานอัตโนมัติ และเปิดตัวการทดสอบและการเชื่อมต่อแบบกำหนดเองรายแรกของวงการ โดยใช้ AI ทำให้การแก้ไขเร็วขึ้น",
       bullets: [
         "กำหนดและดำเนินกลยุทธ์ผลิตภัณฑ์สำหรับแพลตฟอร์มเก็บหลักฐานอัตโนมัติของ Vanta โดยประสานงานข้ามทีมทั้งผู้บริหาร วิศวกรรม และดีไซน์",
         "นำการค้นคว้าและเปิดตัวแบบ 0 ถึง 1 ของการทดสอบและการเชื่อมต่อแบบกำหนดเองรายแรกของวงการ ที่ให้ลูกค้าตรวจสอบมาตรฐานใดก็ได้บน Vanta และขยายตลาด",
@@ -707,7 +732,7 @@ const th: Strings = {
       loc: "ซีแอตเทิล",
       years: "2022 – 2023",
       summary:
-        "วางแผนงานสำหรับโครงสร้างพื้นฐาน ความปลอดภัย การกำกับดูแล และเครื่องมือนักพัฒนาในวงการฟินเทค",
+        "ที่ยูนิคอร์นด้านการชำระเงินและฟินเทค ผมวางแผนงานสำหรับโครงสร้างพื้นฐาน ความปลอดภัย compliance และเครื่องมือนักพัฒนา",
       bullets: [
         "ร่วมงานกับธนาคารและทีมขายเพื่อประเมินผลกระทบด้านการสร้างรายได้ ธุรกิจ และผลิตภัณฑ์ จากความน่าเชื่อถือที่สูงขึ้นและมาตรฐานการกำกับดูแลทางการเงินใหม่",
         "กำหนดแผนงานสำหรับโครงสร้างพื้นฐาน ความปลอดภัย การกำกับดูแล และเครื่องมือพัฒนาซอฟต์แวร์ของ Modern Treasury",
@@ -927,6 +952,7 @@ export function getContent(locale: Locale) {
     journey: { ...journeyMeta, ...s.journey },
     cities: cityGeo.map((g): City => ({ ...g, ...s.cities[g.id] })),
     approach: { ...approachMeta, ...s.approach },
+    logos: { ...s.logos, companies: logoCompanies },
     facets: facetIds.map((id): Facet => ({ id, ...s.facets[id] })),
     work: {
       ...workMeta,
