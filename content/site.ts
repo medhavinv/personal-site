@@ -349,7 +349,7 @@ const en: Strings = {
       bullets: [
         "Reduced app and integration build and deployment time from days to minutes.",
       ],
-      metrics: ["AI", "Context Layer", "Developer Experience", "CLI"],
+      metrics: ["AI", "Context Layer", "Developer Experience", "CLI", "AI agent interfaces"],
     },
     vanta: {
       co: "Vanta",
