@@ -330,7 +330,7 @@ const en: Strings = {
       bullets: [
         "Led strategy and roadmap for AI infrastructure, AI agent interfaces, developer tools, frameworks, and CLI, which reduced app and integration build and deployment time from days to minutes.",
       ],
-      metrics: ["Days → minutes", "AI agent interfaces"],
+      metrics: ["AI", "Context Layer", "Developer Experience", "CLI"],
     },
     vanta: {
       co: "Vanta",
@@ -345,7 +345,7 @@ const en: Strings = {
         "Revamped the tests page with Design, driving a net +20% customer satisfaction and up to a 10% boost in audit evidence generated within the first hour.",
         "Led research, interviews, and partner collaboration to shape the integration platform, adding 200+ integrations in 6 months to cement Vanta's integrations lead.",
       ],
-      metrics: ["+20% CSAT", "200+ integrations", "0→1 launch"],
+      metrics: ["Integrations", "Cyber Security", "0 to 1", "Compliance"],
     },
     mt: {
       co: "Modern Treasury",
@@ -373,7 +373,7 @@ const en: Strings = {
         "Reduced performance complaints by 75% through performance improvements, management frameworks, and the tooling built around them.",
         "Mentored PMs and engineering leads and helped define infrastructure PM roles and responsibilities.",
       ],
-      metrics: ["−75% perf complaints", "Mentored PMs"],
+      metrics: ["Load Times", "Experimentation", "Mentored PMs", "Data & Dev Tools"],
     },
     lyft: {
       co: "Lyft",
@@ -388,7 +388,7 @@ const en: Strings = {
         "Drove company-wide Kubernetes adoption for all Lyft services and owned the roadmap for the Kubernetes compute platform.",
         "Defined metrics, scope, and execution for Lyft's data ingestion and storage platforms and led trade-off analyses across AWS, GCP, and in-house.",
       ],
-      metrics: ["Millions saved", "Company-wide K8s"],
+      metrics: ["Kubernetes", "Hosting Costs", "Profitability", "Data Platforms"],
     },
     msft: {
       co: "Microsoft",
@@ -403,7 +403,7 @@ const en: Strings = {
         "Spearheaded the vision, roadmap, and execution for an in-app feedback system and diagnostic telemetry across all Office applications.",
         "Boosted pipeline data quality by designing new APIs, metrics, dashboards, and alerts.",
       ],
-      metrics: ["$2.1M saved", "GDPR rights"],
+      metrics: ["GDPR", "Data Platform", "Data Quality", "Diagnostics Data"],
     },
     motorola: {
       co: "Motorola Solutions",
@@ -415,7 +415,7 @@ const en: Strings = {
         "Engineered C and C++ applications for input peripherals and scanners.",
         "Moderated, authored, and edited the company innovation blog and newsletter.",
       ],
-      metrics: ["C / C++"],
+      metrics: ["C", "C++", "Hardware"],
     },
     uoft: {
       co: "University of Toronto",
