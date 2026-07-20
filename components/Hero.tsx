@@ -14,7 +14,22 @@ export function Hero() {
       <p className="mt-[30px] max-w-[56ch] font-body text-[clamp(18px,2.1vw,24px)] font-light leading-[1.5] text-ink2">
         {hero.lead}
       </p>
-      <div className="mt-[38px] flex flex-wrap gap-[14px]">
+      <p className="mt-5 max-w-[56ch] font-body text-[clamp(18px,2.1vw,24px)] font-light leading-[1.5] text-ink2">
+        {hero.arc}
+      </p>
+      {/* Company wordmarks: a uniform, muted credibility row, so a less-known
+          startup reads as a peer of the recognizable names. */}
+      <div className="mt-[26px] flex flex-wrap items-center gap-x-6 gap-y-[10px]">
+        {hero.companies.map((c) => (
+          <span
+            key={c.id}
+            className="font-display text-[16px] font-semibold tracking-[-0.01em] text-faint transition-colors duration-200 hover:text-ink sm:text-[18px]"
+          >
+            {c.label}
+          </span>
+        ))}
+      </div>
+      <div className="mt-[34px] flex flex-wrap gap-[14px]">
         <a
           href={hero.primaryCta.href}
           className="rounded-full bg-ink px-[26px] py-[13px] font-display text-[14px] font-medium text-paper transition-opacity hover:opacity-85"
@@ -27,24 +42,6 @@ export function Hero() {
         >
           {hero.secondaryCta.label}
         </a>
-      </div>
-      {/* Facts: stacked rows on narrow screens, three columns from sm up. */}
-      <div className="mt-[52px] grid grid-cols-1 overflow-hidden rounded-[10px] border border-hairline-strong bg-surface sm:grid-cols-3">
-        {hero.facts.map((fact, i) => (
-          <div
-            key={fact.label}
-            className={
-              i < hero.facts.length - 1
-                ? "border-b border-[rgba(30,27,22,0.14)] px-[22px] py-5 sm:border-b-0 sm:border-r"
-                : "px-[22px] py-5"
-            }
-          >
-            <div className="mb-[9px] font-mono text-[10px] font-medium uppercase leading-none tracking-[0.1em] text-faint">
-              {fact.label}
-            </div>
-            <div className="text-[16px] font-medium">{fact.value}</div>
-          </div>
-        ))}
       </div>
     </section>
   );

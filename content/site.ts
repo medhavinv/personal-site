@@ -87,10 +87,11 @@ const roleMeta: { id: string; tags: string[] }[] = [
   { id: "uoft", tags: ["Education"] },
 ];
 
-// Company wordmarks for the logo strip that bridges Approach and Work. Names
-// are proper nouns and stay in Latin across locales. Order runs big tech first,
-// then startups, mirroring the tagline. `svg` can hold a real logo path per
-// company later; until then the component renders the label as a wordmark.
+// Company wordmarks shown as a credibility row inside the hero. Names are
+// proper nouns and stay in Latin across locales. Order runs big tech first,
+// then startups, mirroring the hero's "big tech -> startups" line. `svg` can
+// hold a real logo path per company later; until then the hero renders the
+// label as a wordmark.
 const logoCompanies: { id: string; label: string; svg?: string }[] = [
   { id: "msft", label: "Microsoft" },
   { id: "lyft", label: "Lyft" },
@@ -171,14 +172,13 @@ type Strings = {
     headingAccent: string;
     headingAfter: string;
     lead: string;
+    arc: string;
     primaryCta: string;
     secondaryCta: string;
-    facts: { label: string; value: string }[];
   };
   journey: { kicker: string; heading: string };
   cities: Record<string, { name: string; country: string; kicker: string; years: string; text: string; linkLabel: string }>;
   approach: { kicker: string; heading: string; intro: string; inPractice: string };
-  logos: { overline: string; tagline: string };
   facets: Record<string, { label: string; blurb: string; proof: string }>;
   work: { kicker: string; heading: string; filterLabels: Record<string, string> };
   roles: Record<string, { co: string; title: string; loc: string; years: string; summary: string; bullets: string[]; metrics: string[] }>;
@@ -247,14 +247,10 @@ const en: Strings = {
     headingBefore: "Technical ",
     headingAccent: "&",
     headingAfter: " strategic product manager.",
-    lead: "Hi there! I'm Vin, a product manager who likes technical platforms and ambiguous product problems. I've worked at large tech companies like Microsoft, Lyft, and Asana, and more recently at startups. I love building tools that help people do their work more efficiently, across data platforms, legal tech and compliance, and developer tools.",
+    lead: "Hi there! I'm Vin, a product manager who likes technical platforms and ambiguous product problems. I love building tools that help people do their work more efficiently, across data platforms, legal tech and compliance, and developer tools.",
+    arc: "Over the past 10-plus years, I've learned to build at scale in big tech, and now I build 0-to-1 at startups.",
     primaryCta: "See my work ↓",
     secondaryCta: "Get in touch →",
-    facts: [
-      { label: "Most recent", value: "Staff Product Manager" },
-      { label: "Based", value: "Seattle, USA" },
-      { label: "From", value: "Bangkok, Thailand" },
-    ],
   },
   journey: {
     kicker: "03 · Journey",
@@ -300,11 +296,6 @@ const en: Strings = {
     intro:
       "A PM turns technical and business judgment, data, and customer insight into strategy, execution, and alignment, so the work reaches customers as real impact.",
     inPractice: "In practice",
-  },
-  logos: {
-    overline: "Where I've built",
-    tagline:
-      "I learned to build at scale in big tech, and now I build 0-to-1 at startups.",
   },
   facets: {
     technical: {
@@ -598,14 +589,10 @@ const th: Strings = {
     headingBefore: "Product Manager สายเทคนิค",
     headingAccent: "และ",
     headingAfter: "กลยุทธ์",
-    lead: "สวัสดีครับ ผมวิน เป็น product manager ที่ชอบงานแพลตฟอร์มเชิงเทคนิคและโจทย์ผลิตภัณฑ์ที่ยังไม่ชัดเจน ผมเคยทำงานกับบริษัทเทคโนโลยีขนาดใหญ่อย่าง Microsoft, Lyft และ Asana และช่วงหลังผมมาสร้างซอฟต์แวร์ที่สตาร์ทอัพ ผมชอบสร้างเครื่องมือที่ช่วยให้คนทำงานได้มีประสิทธิภาพมากขึ้น ทั้งด้านแพลตฟอร์มข้อมูล เทคโนโลยีกฎหมายและการปฏิบัติตามข้อกำหนด และเครื่องมือสำหรับนักพัฒนา",
+    lead: "สวัสดีครับ ผมวิน เป็น product manager ที่ชอบงานแพลตฟอร์มเชิงเทคนิคและปัญหาเทคโนโลยีที่ยังไม่มีคำตอบ ผมชอบสร้างเครื่องมือที่ช่วยให้คนทำงานได้มีประสิทธิภาพมากขึ้น ทั้งด้านแพลตฟอร์มข้อมูล เทคโนโลยีกฎหมายและการปฏิบัติตามข้อกำหนด และเครื่องมือสำหรับนักเทคโนโลยี",
+    arc: "กว่า 10 ปีที่ผ่านมา ผมได้เรียนรู้การสร้างซอฟต์แวร์ในสเกลใหญ่จากบริษัทเทคโนโลยีชั้นนำ และตอนนี้ผมสร้างซอฟต์แวร์แบบ 0-to-1 ในสตาร์ทอัพ",
     primaryCta: "ดูผลงานของผม ↓",
     secondaryCta: "ติดต่อผม →",
-    facts: [
-      { label: "ตำแหน่งล่าสุด", value: "Staff Product Manager" },
-      { label: "อยู่ที่", value: "ซีแอตเทิล สหรัฐอเมริกา" },
-      { label: "มาจาก", value: "กรุงเทพฯ ประเทศไทย" },
-    ],
   },
   journey: {
     kicker: "03 · เส้นทาง",
@@ -651,11 +638,6 @@ const th: Strings = {
     intro:
       "PM เปลี่ยนวิจารณญาณด้านเทคนิคและธุรกิจ ข้อมูล และความเข้าใจลูกค้า ให้กลายเป็นกลยุทธ์ การลงมือทำ และการทำให้ทุกฝ่ายไปในทิศทางเดียวกัน เพื่อให้งานส่งถึงมือลูกค้าเป็นผลลัพธ์ที่จับต้องได้จริง",
     inPractice: "ในทางปฏิบัติ",
-  },
-  logos: {
-    overline: "ที่ที่ผมเคยสร้าง",
-    tagline:
-      "ผมเรียนรู้การสร้างซอฟต์แวร์ในสเกลใหญ่จากบริษัทเทคโนโลยีชั้นนำ และตอนนี้ผมสร้างซอฟต์แวร์แบบ 0-to-1 ในสตาร์ทอัพ",
   },
   facets: {
     technical: {
@@ -948,11 +930,11 @@ export function getContent(locale: Locale) {
       ...s.hero,
       primaryCta: { label: s.hero.primaryCta, href: "#work" },
       secondaryCta: { label: s.hero.secondaryCta, href: "#contact" },
+      companies: logoCompanies,
     },
     journey: { ...journeyMeta, ...s.journey },
     cities: cityGeo.map((g): City => ({ ...g, ...s.cities[g.id] })),
     approach: { ...approachMeta, ...s.approach },
-    logos: { ...s.logos, companies: logoCompanies },
     facets: facetIds.map((id): Facet => ({ id, ...s.facets[id] })),
     work: {
       ...workMeta,
