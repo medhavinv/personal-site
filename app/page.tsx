@@ -19,8 +19,8 @@ export default function Home() {
       <Nav />
       <main className="relative z-10 mx-auto max-w-content px-8">
         <Hero />
-        <Approach />
         <Logos />
+        <Approach />
         <Work />
         <Journey />
         <Teaching />
