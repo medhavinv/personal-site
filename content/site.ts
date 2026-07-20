@@ -61,7 +61,7 @@ export const cityGeo: CityGeo[] = [
 ];
 
 export const journeyMeta = {
-  routeOrder: ["bangkok", "toronto", "sf", "seattle"],
+  routeOrder: ["sf", "seattle", "toronto", "bangkok"],
   defaultCity: "seattle",
 };
 
