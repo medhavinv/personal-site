@@ -35,25 +35,14 @@ export function Journey() {
 
   const active = cities.find((c) => c.id === activeCity) ?? cities[0];
 
-  // Order used when swiping through cities. Fall back to the raw city list for
-  // any ids missing from routeOrder so no city is unreachable.
+  // Order used when swiping/clicking through cities. Sorted by horizontal
+  // position on the map (west → east) so a "next"/right click always moves us
+  // left-to-right across the map, and "prev"/left moves right-to-left.
   const swipeOrder = useMemo(() => {
-    const seen = new Set<string>();
-    const ordered: string[] = [];
-    journey.routeOrder.forEach((id) => {
-      if (cities.some((c) => c.id === id) && !seen.has(id)) {
-        seen.add(id);
-        ordered.push(id);
-      }
-    });
-    cities.forEach((c) => {
-      if (!seen.has(c.id)) {
-        seen.add(c.id);
-        ordered.push(c.id);
-      }
-    });
-    return ordered;
-  }, [journey.routeOrder, cities]);
+    return cities
+      .map((c) => c.id)
+      .sort((a, b) => (cityXY[a]?.x ?? 0) - (cityXY[b]?.x ?? 0));
+  }, [cities, cityXY]);
 
   const step = (dir: -1 | 1) => {
     if (swipeOrder.length === 0) return;
