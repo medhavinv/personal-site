@@ -76,7 +76,7 @@ export function Work() {
                       <div className="mb-[6px] font-display text-[14px] font-medium text-ink2">
                         {r.title}
                       </div>
-                      <div className="max-w-[64ch] font-body text-[15px] leading-[1.5] text-muted">
+                      <div className="max-w-[92ch] font-body text-[15px] leading-[1.5] text-muted">
                         {r.summary}
                       </div>
                     </div>
