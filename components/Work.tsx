@@ -1,7 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { useContent } from "@/components/LocaleProvider";
+
+const LINK_PATTERN = /\[([^\]]+)\]\(([^)]+)\)/g;
+
+function renderBulletText(text: string) {
+  const parts: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+
+  LINK_PATTERN.lastIndex = 0;
+  while ((match = LINK_PATTERN.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(
+        <Fragment key={key++}>{text.slice(lastIndex, match.index)}</Fragment>,
+      );
+    }
+    parts.push(
+      <a
+        key={key++}
+        href={match[2]}
+        target="_blank"
+        rel="noopener"
+        className="text-accent underline"
+      >
+        {match[1]}
+      </a>,
+    );
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < text.length) {
+    parts.push(<Fragment key={key++}>{text.slice(lastIndex)}</Fragment>);
+  }
+  return parts;
+}
 
 export function Work() {
   const { roles, work } = useContent();
@@ -103,7 +137,7 @@ export function Work() {
                             key={i}
                             className="mb-[9px] text-[14px] leading-[1.6] text-ink2"
                           >
-                            {b}
+                            {renderBulletText(b)}
                           </li>
                         ))}
                       </ul>

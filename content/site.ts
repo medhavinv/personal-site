@@ -347,7 +347,7 @@ const en: Strings = {
       summary:
         "At this Series C startup building an AI context layer for data, I led strategy and roadmap for its AI infrastructure, AI agent interfaces, developer tools, frameworks, and CLI.",
       bullets: [
-        "Reduced app and integration build and deployment time from days to minutes.",
+        "Led strategy and roadmap for AI Infrastructure, AI agent interfaces, dev tools, [Frameworks](https://atlan.com/app-framework/) and CLI, reducing app and integration build/deployment time from days to minutes.",
       ],
       metrics: ["AI", "Context Layer", "Developer Experience", "CLI", "AI agent interfaces"],
     },
@@ -360,9 +360,9 @@ const en: Strings = {
         "At this security and compliance unicorn, I owned strategy for the automated evidence collection platform and launched the industry's first custom tests and integrations, using AI to make remediation faster.",
       bullets: [
         "Defined and executed product strategy for Vanta's automated evidence collection platform, driving cross-functional alignment across leadership, engineering, and design.",
-        "Led 0-to-1 discovery and launch of the industry's first custom tests and integrations, letting customers run any audit on Vanta and driving market expansion.",
-        "Revamped the tests page with Design, driving a net +20% customer satisfaction and up to a 10% boost in audit evidence generated within the first hour.",
-        "Led research, interviews, and partner collaboration to shape the integration platform, adding 200+ integrations in 6 months to cement Vanta's integrations lead.",
+        "Led 0-to-1 discovery and launch of the [industry's first custom tests and integrations,](https://www.vanta.com/resources/introducing-custom-tests) letting customers run any audit on Vanta and driving market expansion.",
+        "Revamped the [tests page](https://www.vanta.com/resources/new-in-vanta-september-2024) with Design, driving a net +20% customer satisfaction and up to a 10% boost in audit evidence generated within the first hour.",
+        "Led research, interviews, and partner collaboration to shape the integration platform, [adding 200+ integrations](https://www.vanta.com/resources/300-integrations) in 6 months to cement Vanta's integrations lead.",
       ],
       metrics: ["Integrations", "Cyber Security", "0 to 1", "Compliance"],
     },
