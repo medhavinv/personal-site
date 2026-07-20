@@ -335,7 +335,7 @@ const en: Strings = {
       Compliance: "Compliance",
       Data: "Data",
       "Dev Tools": "Dev Tools",
-      Infra: "Infra",
+      Infra: "Platform",
     },
   },
   roles: {
@@ -349,7 +349,7 @@ const en: Strings = {
       bullets: [
         "Led strategy and roadmap for AI Infrastructure, AI agent interfaces, dev tools, [Frameworks](https://atlan.com/app-framework/) and CLI, reducing app and integration build/deployment time from days to minutes.",
       ],
-      metrics: ["AI", "Context Layer", "Developer Experience", "CLI", "AI agent interfaces"],
+      metrics: ["AI", "Data", "Dev Tools", "Platform", "Context Layer", "CLI", "AI agent interfaces"],
     },
     vanta: {
       co: "Vanta",
@@ -364,7 +364,7 @@ const en: Strings = {
         "Revamped the [tests page](https://www.vanta.com/resources/new-in-vanta-september-2024) with Design, driving a net +20% customer satisfaction and up to a 10% boost in audit evidence generated within the first hour.",
         "Led research, interviews, and partner collaboration to shape the integration platform, [adding 200+ integrations](https://www.vanta.com/resources/300-integrations) in 6 months to cement Vanta's integrations lead.",
       ],
-      metrics: ["Integrations", "Cyber Security", "0 to 1", "Compliance"],
+      metrics: ["AI", "Compliance", "Data", "Platform", "Integrations", "Cyber Security", "0 to 1"],
     },
     mt: {
       co: "Modern Treasury",
@@ -377,7 +377,7 @@ const en: Strings = {
         "Partnered with banks and sales to assess the monetization, business, and product implications of higher reliability and new financial compliance standards.",
         "Defined roadmaps for Modern Treasury's infrastructure, security, compliance, and software development tools.",
       ],
-      metrics: ["Fintech compliance", "Bank partnerships"],
+      metrics: ["Compliance", "Dev Tools", "Platform", "Bank partnerships"],
     },
     asana: {
       co: "Asana",
@@ -392,7 +392,7 @@ const en: Strings = {
         "Reduced performance complaints by 75% through performance improvements, management frameworks, and the tooling built around them.",
         "Mentored PMs and engineering leads and helped define infrastructure PM roles and responsibilities.",
       ],
-      metrics: ["Load Times", "Experimentation", "Mentored PMs", "Data & Dev Tools"],
+      metrics: ["Dev Tools", "Platform", "Load Times", "Experimentation", "Mentored PMs"],
     },
     lyft: {
       co: "Lyft",
@@ -407,7 +407,7 @@ const en: Strings = {
         "Drove company-wide Kubernetes adoption for all Lyft services and owned the roadmap for the Kubernetes compute platform.",
         "Defined metrics, scope, and execution for Lyft's data ingestion and storage platforms and led trade-off analyses across AWS, GCP, and in-house.",
       ],
-      metrics: ["Kubernetes", "Hosting Costs", "Profitability", "Data Platforms"],
+      metrics: ["Data", "Dev Tools", "Platform", "Kubernetes", "Hosting Costs", "Profitability"],
     },
     msft: {
       co: "Microsoft",
@@ -422,7 +422,7 @@ const en: Strings = {
         "Spearheaded the vision, roadmap, and execution for an in-app feedback system and diagnostic telemetry across all Office applications.",
         "Boosted pipeline data quality by designing new APIs, metrics, dashboards, and alerts.",
       ],
-      metrics: ["GDPR", "Data Platform", "Data Quality", "Diagnostics Data"],
+      metrics: ["Compliance", "Data", "Dev Tools", "Platform", "GDPR", "Data Quality", "Diagnostics Data"],
     },
     motorola: {
       co: "Motorola Solutions",
@@ -434,7 +434,7 @@ const en: Strings = {
         "Engineered C and C++ applications for input peripherals and scanners.",
         "Moderated, authored, and edited the company innovation blog and newsletter.",
       ],
-      metrics: ["C", "C++", "Hardware"],
+      metrics: ["Platform", "C", "C++", "Hardware"],
     },
     uoft: {
       co: "University of Toronto",
@@ -677,7 +677,7 @@ const th: Strings = {
       Compliance: "การปฏิบัติตามข้อกำหนด",
       Data: "ข้อมูล",
       "Dev Tools": "เครื่องมือนักพัฒนา",
-      Infra: "โครงสร้างพื้นฐาน",
+      Infra: "แพลตฟอร์ม",
     },
   },
   roles: {
@@ -691,7 +691,7 @@ const th: Strings = {
       bullets: [
         "ลดเวลา build และ deploy ของแอปและการเชื่อมต่อจากหลายวันเหลือไม่กี่นาที",
       ],
-      metrics: ["หลายวันเหลือนาที", "อินเทอร์เฟซ AI agent"],
+      metrics: ["AI", "ข้อมูล", "เครื่องมือนักพัฒนา", "แพลตฟอร์ม", "หลายวันเหลือนาที", "อินเทอร์เฟซ AI agent"],
     },
     vanta: {
       co: "Vanta",
@@ -706,7 +706,7 @@ const th: Strings = {
         "ปรับปรุงหน้าการทดสอบร่วมกับทีมดีไซน์ ทำให้ความพึงพอใจของลูกค้าเพิ่มขึ้นสุทธิ 20% และหลักฐานการตรวจสอบในชั่วโมงแรกเพิ่มขึ้นได้ถึง 10%",
         "นำการวิจัย การสัมภาษณ์ และการทำงานร่วมกับพาร์ตเนอร์เพื่อออกแบบแพลตฟอร์มการเชื่อมต่อ เพิ่มการเชื่อมต่อกว่า 200 รายการในหกเดือน เพื่อตอกย้ำความเป็นผู้นำด้านการเชื่อมต่อของ Vanta",
       ],
-      metrics: ["+20% CSAT", "การเชื่อมต่อ 200+", "เปิดตัว 0→1"],
+      metrics: ["AI", "การปฏิบัติตามข้อกำหนด", "ข้อมูล", "แพลตฟอร์ม", "+20% CSAT", "การเชื่อมต่อ 200+", "เปิดตัว 0→1"],
     },
     mt: {
       co: "Modern Treasury",
@@ -719,7 +719,7 @@ const th: Strings = {
         "ร่วมงานกับธนาคารและทีมขายเพื่อประเมินผลกระทบด้านการสร้างรายได้ ธุรกิจ และผลิตภัณฑ์ จากความน่าเชื่อถือที่สูงขึ้นและมาตรฐานการปฏิบัติตามข้อกำหนดทางการเงินใหม่",
         "กำหนดแผนงานสำหรับโครงสร้างพื้นฐาน ความปลอดภัย การปฏิบัติตามข้อกำหนด และเครื่องมือพัฒนาซอฟต์แวร์ของ Modern Treasury",
       ],
-      metrics: ["การปฏิบัติตามข้อกำหนดฟินเทค", "ความร่วมมือกับธนาคาร"],
+      metrics: ["การปฏิบัติตามข้อกำหนด", "เครื่องมือนักพัฒนา", "แพลตฟอร์ม", "ความร่วมมือกับธนาคาร"],
     },
     asana: {
       co: "Asana",
@@ -734,7 +734,7 @@ const th: Strings = {
         "ลดข้อร้องเรียนด้านประสิทธิภาพลง 75% ผ่านการปรับปรุงประสิทธิภาพ กรอบการบริหารจัดการ และเครื่องมือที่สร้างขึ้นรอบ ๆ",
         "เป็นพี่เลี้ยงให้ PM และหัวหน้าทีมวิศวกรรม และช่วยกำหนดบทบาทหน้าที่ของ PM ด้านโครงสร้างพื้นฐาน",
       ],
-      metrics: ["−75% ข้อร้องเรียน", "เป็นพี่เลี้ยง PM"],
+      metrics: ["เครื่องมือนักพัฒนา", "แพลตฟอร์ม", "−75% ข้อร้องเรียน", "เป็นพี่เลี้ยง PM"],
     },
     lyft: {
       co: "Lyft",
@@ -749,7 +749,7 @@ const th: Strings = {
         "ขับเคลื่อนการนำ Kubernetes มาใช้กับทุกบริการของ Lyft ทั้งบริษัท และดูแลแผนงานของแพลตฟอร์มประมวลผล Kubernetes",
         "กำหนดตัวชี้วัด ขอบเขต และการดำเนินงานสำหรับแพลตฟอร์มการนำเข้าและจัดเก็บข้อมูลของ Lyft และนำการวิเคราะห์ข้อดีข้อเสียระหว่าง AWS, GCP และระบบภายใน",
       ],
-      metrics: ["ประหยัดหลายล้าน", "Kubernetes ทั้งบริษัท"],
+      metrics: ["ข้อมูล", "เครื่องมือนักพัฒนา", "แพลตฟอร์ม", "ประหยัดหลายล้าน", "Kubernetes ทั้งบริษัท"],
     },
     msft: {
       co: "Microsoft",
@@ -764,7 +764,7 @@ const th: Strings = {
         "นำวิสัยทัศน์ แผนงาน และการดำเนินงานสำหรับระบบรับฟีดแบ็กในแอปและ telemetry เชิงวินิจฉัยทั่วทุกแอปพลิเคชันของ Office",
         "ยกระดับคุณภาพข้อมูลใน pipeline ด้วยการออกแบบ API ตัวชี้วัด แดชบอร์ด และการแจ้งเตือนใหม่",
       ],
-      metrics: ["ประหยัด $2.1M", "สิทธิ์ GDPR"],
+      metrics: ["การปฏิบัติตามข้อกำหนด", "ข้อมูล", "เครื่องมือนักพัฒนา", "แพลตฟอร์ม", "ประหยัด $2.1M", "สิทธิ์ GDPR"],
     },
     motorola: {
       co: "Motorola Solutions",
@@ -776,7 +776,7 @@ const th: Strings = {
         "พัฒนาแอปพลิเคชันภาษา C และ C++ สำหรับอุปกรณ์รับข้อมูลและเครื่องสแกน",
         "ดูแล เขียน และเรียบเรียงบล็อกและจดหมายข่าวด้านนวัตกรรมของบริษัท",
       ],
-      metrics: ["C / C++"],
+      metrics: ["แพลตฟอร์ม", "C / C++"],
     },
     uoft: {
       co: "University of Toronto",
