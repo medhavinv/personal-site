@@ -328,7 +328,7 @@ const en: Strings = {
       summary:
         "Led strategy and roadmap for AI infrastructure and AI agent interfaces, plus the developer tools, frameworks, and CLI that sit on top of Atlan's data platform.",
       bullets: [
-        "Led strategy and roadmap for AI infrastructure, AI agent interfaces, developer tools, frameworks, and CLI, which reduced app and integration build and deployment time from days to minutes.",
+        "Led strategy and roadmap for AI Infrastructure, AI agent interfaces, dev tools, [Frameworks](https://atlan.com/app-framework/) and CLI, reducing app and integration build/deployment time from days to minutes.",
       ],
       metrics: ["Days → minutes", "AI agent interfaces"],
     },
@@ -341,9 +341,9 @@ const en: Strings = {
         "Owned strategy for the automated evidence collection platform and launched the industry's first custom tests and integrations, using AI to make test remediation faster.",
       bullets: [
         "Defined and executed product strategy for Vanta's automated evidence collection platform, driving cross-functional alignment across leadership, engineering, and design.",
-        "Led 0-to-1 discovery and launch of the industry's first custom tests and integrations, letting customers run any audit on Vanta and driving market expansion.",
-        "Revamped the tests page with Design, driving a net +20% customer satisfaction and up to a 10% boost in audit evidence generated within the first hour.",
-        "Led research, interviews, and partner collaboration to shape the integration platform, adding 200+ integrations in 6 months to cement Vanta's integrations lead.",
+        "Led 0-to-1 discovery and launch of the [industry's first custom tests and integrations,](https://www.vanta.com/resources/introducing-custom-tests) letting customers run any audit on Vanta and driving market expansion.",
+        "Revamped the [tests page](https://www.vanta.com/resources/new-in-vanta-september-2024) with Design, driving a net +20% customer satisfaction and up to a 10% boost in audit evidence generated within the first hour.",
+        "Led research, interviews, and partner collaboration to shape the integration platform, [adding 200+ integrations](https://www.vanta.com/resources/300-integrations) in 6 months to cement Vanta's integrations lead.",
       ],
       metrics: ["+20% CSAT", "200+ integrations", "0→1 launch"],
     },
