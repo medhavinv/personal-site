@@ -201,9 +201,12 @@ export function Journey() {
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
+          {/* Reserve a stable height so the card doesn't resize as we page
+              between cities with differing amounts of text. Short entries
+              center within the reserved space rather than shrinking the card. */}
           <div
             key={active.id}
-            className={`grid grid-cols-1 gap-x-10 gap-y-4 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)] md:items-center ${
+            className={`grid min-h-[280px] grid-cols-1 gap-x-10 gap-y-4 sm:min-h-[210px] md:min-h-[150px] md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)] md:items-center ${
               dir === 1 ? "card-slide-right" : "card-slide-left"
             }`}
           >
