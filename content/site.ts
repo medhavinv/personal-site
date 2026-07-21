@@ -33,14 +33,14 @@ export const sectionIds = [
   "top",
   "role",
   "work",
-  "journey",
   "teaching",
   "projects",
+  "journey",
   "contact",
 ];
 
 // Section ids that appear in the nav, in order.
-const navSectionIds = ["role", "work", "journey", "teaching", "projects", "contact"];
+const navSectionIds = ["role", "work", "teaching", "projects", "journey", "contact"];
 
 export const brandName = "Vin Vadhanasindhu";
 
