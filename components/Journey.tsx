@@ -14,6 +14,7 @@ import {
 export function Journey() {
   const { cities, journey } = useContent();
   const [activeCity, setActiveCity] = useState(journey.defaultCity);
+  const [dir, setDir] = useState<1 | -1>(1);
 
   // Project each city to viewBox coordinates once.
   const cityXY = useMemo(() => {
@@ -44,11 +45,22 @@ export function Journey() {
       .sort((a, b) => (cityXY[a]?.x ?? 0) - (cityXY[b]?.x ?? 0));
   }, [cities, cityXY]);
 
-  const step = (dir: -1 | 1) => {
+  const step = (delta: -1 | 1) => {
     if (swipeOrder.length === 0) return;
     const i = swipeOrder.indexOf(active.id);
-    const next = (i + dir + swipeOrder.length) % swipeOrder.length;
+    const next = (i + delta + swipeOrder.length) % swipeOrder.length;
+    setDir(delta);
     setActiveCity(swipeOrder[next]);
+  };
+
+  // Jump straight to a city (map pin or position dot), inferring the slide
+  // direction from its position in the swipe order.
+  const goTo = (id: string) => {
+    if (id === active.id) return;
+    const from = swipeOrder.indexOf(active.id);
+    const to = swipeOrder.indexOf(id);
+    if (from !== -1 && to !== -1) setDir(to >= from ? 1 : -1);
+    setActiveCity(id);
   };
 
   // Track the horizontal swipe gesture on the detail card.
@@ -134,11 +146,11 @@ export function Journey() {
                     role="button"
                     tabIndex={0}
                     aria-label={`${c.name}, ${c.country}`}
-                    onClick={() => setActiveCity(c.id)}
+                    onClick={() => goTo(c.id)}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ") {
                         e.preventDefault();
-                        setActiveCity(c.id);
+                        goTo(c.id);
                       }
                     }}
                     className="cursor-pointer focus:outline-none focus-visible:[&>circle]:stroke-accent"
@@ -188,7 +200,12 @@ export function Journey() {
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
-          <div className="grid grid-cols-1 gap-x-10 gap-y-4 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)] md:items-center">
+          <div
+            key={active.id}
+            className={`grid grid-cols-1 gap-x-10 gap-y-4 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)] md:items-center ${
+              dir === 1 ? "card-slide-right" : "card-slide-left"
+            }`}
+          >
             <div>
               <div className="mb-4 font-mono text-[11px] font-medium uppercase leading-none tracking-[0.12em] text-accent2">
                 {active.kicker} · {active.years}
@@ -232,7 +249,7 @@ export function Journey() {
                   type="button"
                   aria-label={`Show ${id}`}
                   aria-current={id === active.id}
-                  onClick={() => setActiveCity(id)}
+                  onClick={() => goTo(id)}
                   className={`h-2 w-2 rounded-full transition-colors ${
                     id === active.id ? "bg-accent2" : "bg-white/25 hover:bg-white/50"
                   }`}
