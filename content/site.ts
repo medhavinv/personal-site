@@ -253,7 +253,7 @@ const en: Strings = {
     secondaryCta: "Get in touch →",
   },
   journey: {
-    kicker: "03 · Journey",
+    kicker: "05 · Journey",
     heading: "From Thailand to Canada and the US.",
   },
   cities: {
@@ -451,7 +451,7 @@ const en: Strings = {
     },
   },
   teaching: {
-    kicker: "04 · Teaching",
+    kicker: "03 · Teaching",
     heading: "One week a year, back in the classroom.",
     paragraphs: [
       "One week each year I go back to Bangkok to teach in the {strong}LLBel program at Chulalongkorn University{/strong}, an intensive bootcamp for law students. I cover product management, design thinking, and how the tech industry works, so future lawyers and regulators understand the systems they will advise on and regulate.",
@@ -491,7 +491,7 @@ const en: Strings = {
     teach4: "Addressing the full room of bootcamp students",
   },
   projects: {
-    kicker: "05 · Projects",
+    kicker: "04 · Projects",
     heading: "Things I've built.",
     intro:
       "A mix of side projects, university work, and things I shipped on the job. Patents, platforms, and tools I built to close a real gap.",
@@ -595,7 +595,7 @@ const th: Strings = {
     secondaryCta: "ติดต่อผม →",
   },
   journey: {
-    kicker: "03 · เส้นทาง",
+    kicker: "05 · เส้นทาง",
     heading: "จากประเทศไทย สู่แคนาดาและสหรัฐอเมริกา",
   },
   cities: {
@@ -793,7 +793,7 @@ const th: Strings = {
     },
   },
   teaching: {
-    kicker: "04 · การสอน",
+    kicker: "03 · การสอน",
     heading: "ปีละหนึ่งสัปดาห์ กลับเข้าห้องเรียนอีกครั้ง",
     paragraphs: [
       "ทุกปีผมกลับกรุงเทพฯ หนึ่งสัปดาห์เพื่อสอนใน{strong}หลักสูตร LLBel ที่จุฬาลงกรณ์มหาวิทยาลัย{/strong} ซึ่งเป็นบูตแคมป์เข้มข้นสำหรับนิสิตคณะนิติศาสตร์ ผมสอนการบริหารผลิตภัณฑ์ การคิดเชิงออกแบบ และเล่าว่าวงการเทคโนโลยีทำงานกันอย่างไร เพื่อให้นักกฎหมายและผู้กำกับดูแลในอนาคตเข้าใจระบบที่พวกเขาจะให้คำปรึกษาและกำกับดูแล",
@@ -833,7 +833,7 @@ const th: Strings = {
     teach4: "พูดคุยกับนิสิตบูตแคมป์ทั้งห้อง",
   },
   projects: {
-    kicker: "05 · โปรเจกต์",
+    kicker: "04 · โปรเจกต์",
     heading: "สิ่งที่ผมสร้าง",
     intro:
       "ทั้งโปรเจกต์ส่วนตัว งานสมัยเรียน และสิ่งที่ผมส่งมอบในงานประจำ ทั้งสิทธิบัตร แพลตฟอร์ม และเครื่องมือที่ผมสร้างเพื่อปิดช่องว่างที่มีอยู่จริง",

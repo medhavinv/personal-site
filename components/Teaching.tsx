@@ -245,13 +245,13 @@ export function Teaching() {
           >
             <div
               key={card}
-              className={`flip3d relative grid min-h-[200px] w-full ${
+              className={`flip3d relative grid h-[260px] w-full ${
                 dir === 1 ? "card-slide-right" : "card-slide-left"
               }`}
               style={{ transform: flipped ? "rotateY(180deg)" : "none" }}
             >
               {/* Front */}
-              <div className="flex flex-col justify-center rounded-[12px] border border-on-ink-border bg-ink-raised p-[22px] [grid-area:1/1] sm:p-[26px]">
+              <div className="flex h-full flex-col justify-center overflow-y-auto rounded-[12px] border border-on-ink-border bg-ink-raised p-[22px] [grid-area:1/1] sm:p-[26px]">
                 <div className="mb-[14px] font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-accent2">
                   {teaching.prompt}
                 </div>
@@ -263,7 +263,7 @@ export function Teaching() {
                 </div>
               </div>
               {/* Back */}
-              <div className="flex flex-col justify-center rounded-[12px] bg-accent2 p-[22px] text-ink [grid-area:1/1] [transform:rotateY(180deg)] sm:p-[26px]">
+              <div className="flex h-full flex-col justify-center overflow-y-auto rounded-[12px] bg-accent2 p-[22px] text-ink [grid-area:1/1] [transform:rotateY(180deg)] sm:p-[26px]">
                 <div className="mb-[14px] font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-ink">
                   {teaching.answer}
                 </div>
