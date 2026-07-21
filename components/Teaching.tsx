@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { useContent } from "@/components/LocaleProvider";
 
 // Render a paragraph string that may contain {strong}...{/strong} markup.
@@ -49,16 +49,51 @@ function PhotoTile({
 export function Teaching() {
   const { flashcards, teaching, teachingPhotos } = useContent();
   const [card, setCard] = useState(0);
+  const [dir, setDir] = useState<1 | -1>(1);
   const [flipped, setFlipped] = useState(false);
   const cur = flashcards[card] ?? flashcards[0];
 
   const next = () => {
+    setDir(1);
     setCard((c) => (c + 1) % flashcards.length);
     setFlipped(false);
   };
   const prev = () => {
+    setDir(-1);
     setCard((c) => (c - 1 + flashcards.length) % flashcards.length);
     setFlipped(false);
+  };
+
+  // Track a horizontal swipe on the flashcard so touch users can page through
+  // cards. A swipe suppresses the tap-to-flip that would otherwise fire.
+  const swipeStart = useRef<{ x: number; y: number } | null>(null);
+  const swiped = useRef(false);
+  const SWIPE_THRESHOLD = 40;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    const t = e.touches[0];
+    swipeStart.current = { x: t.clientX, y: t.clientY };
+    swiped.current = false;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (!swipeStart.current) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - swipeStart.current.x;
+    const dy = t.clientY - swipeStart.current.y;
+    swipeStart.current = null;
+    if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+      // Swipe left → next card, swipe right → previous card.
+      swiped.current = true;
+      if (dx < 0) next();
+      else prev();
+    }
+  };
+  const onCardClick = () => {
+    if (swiped.current) {
+      swiped.current = false;
+      return;
+    }
+    setFlipped((f) => !f);
   };
 
   return (
@@ -85,18 +120,20 @@ export function Teaching() {
 
         {/* Q&A flip-card widget */}
         <div className="rounded-[16px] bg-ink p-[26px] text-paper">
-          <div className="mb-[6px] font-mono text-[10px] font-medium uppercase leading-none tracking-[0.12em] text-[#9a9285]">
+          <div className="mb-5 font-mono text-[10px] font-medium uppercase leading-none tracking-[0.12em] text-[#9a9285]">
             {teaching.widgetTitle}
           </div>
-          <div className="mb-5 font-mono text-[12px] text-[#7d766a]">
-            {teaching.cardCounter(card + 1, flashcards.length)}
-          </div>
           <div
-            className="mb-[18px] cursor-pointer [perspective:1200px]"
-            onClick={() => setFlipped((f) => !f)}
+            className="mb-[18px] cursor-pointer touch-pan-y select-none [perspective:1200px]"
+            onClick={onCardClick}
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
           >
             <div
-              className="flip3d relative grid min-h-[200px] w-full"
+              key={card}
+              className={`flip3d relative grid min-h-[200px] w-full ${
+                dir === 1 ? "card-slide-right" : "card-slide-left"
+              }`}
               style={{ transform: flipped ? "rotateY(180deg)" : "none" }}
             >
               {/* Front */}

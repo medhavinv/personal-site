@@ -228,3 +228,39 @@ section {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
+
+/* Horizontal slide-in for carousel cards (teaching flashcards + journey
+   detail card). Direction depends on whether we moved to the next or the
+   previous card. */
+@keyframes cardSlideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes cardSlideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.card-slide-right {
+  animation: cardSlideFromRight 0.35s ease;
+}
+.card-slide-left {
+  animation: cardSlideFromLeft 0.35s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-slide-right,
+  .card-slide-left {
+    animation: none;
+  }
+}
