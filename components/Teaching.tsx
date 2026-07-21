@@ -245,30 +245,34 @@ export function Teaching() {
           >
             <div
               key={card}
-              className={`flip3d relative grid h-[260px] w-full ${
+              className={`flip3d relative grid h-[360px] w-full ${
                 dir === 1 ? "card-slide-right" : "card-slide-left"
               }`}
               style={{ transform: flipped ? "rotateY(180deg)" : "none" }}
             >
               {/* Front */}
-              <div className="flex h-full flex-col justify-center overflow-y-auto rounded-[12px] border border-on-ink-border bg-ink-raised p-[22px] [grid-area:1/1] sm:p-[26px]">
-                <div className="mb-[14px] font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-accent2">
+              <div className="flex h-full flex-col overflow-hidden rounded-[12px] border border-on-ink-border bg-ink-raised p-[22px] [grid-area:1/1] sm:p-[26px]">
+                <div className="mb-[14px] shrink-0 font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-accent2">
                   {teaching.prompt}
                 </div>
-                <div className="font-body text-[20px] leading-[1.3] text-paper sm:text-[24px]">
-                  {cur.front}
+                <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
+                  <div className="my-auto font-body text-[20px] leading-[1.3] text-paper sm:text-[24px]">
+                    {cur.front}
+                  </div>
                 </div>
-                <div className="mt-[18px] font-mono text-[11px] text-on-ink-faint">
+                <div className="mt-[18px] shrink-0 font-mono text-[11px] text-on-ink-faint">
                   {teaching.tapToReveal}
                 </div>
               </div>
               {/* Back */}
-              <div className="flex h-full flex-col justify-center overflow-y-auto rounded-[12px] bg-accent2 p-[22px] text-ink [grid-area:1/1] [transform:rotateY(180deg)] sm:p-[26px]">
-                <div className="mb-[14px] font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-ink">
+              <div className="flex h-full flex-col overflow-hidden rounded-[12px] bg-accent2 p-[22px] text-ink [grid-area:1/1] [transform:rotateY(180deg)] sm:p-[26px]">
+                <div className="mb-[14px] shrink-0 font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-ink">
                   {teaching.answer}
                 </div>
-                <div className="font-body text-[17px] leading-[1.45] sm:text-[19px]">
-                  {cur.back}
+                <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
+                  <div className="my-auto font-body text-[17px] leading-[1.45] sm:text-[19px]">
+                    {cur.back}
+                  </div>
                 </div>
               </div>
             </div>
