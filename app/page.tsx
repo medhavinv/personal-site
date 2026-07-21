@@ -18,11 +18,11 @@ export default function Home() {
       <Nav />
       <main className="relative z-10 mx-auto max-w-content px-8">
         <Hero />
-        <Journey />
         <Approach />
         <Work />
         <Teaching />
         <Projects />
+        <Journey />
         <Contact />
       </main>
       <Footer />
