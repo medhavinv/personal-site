@@ -1,6 +1,7 @@
 "use client";
 
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useContent } from "@/components/LocaleProvider";
 
 // Render a paragraph string that may contain {strong}...{/strong} markup.
@@ -23,14 +24,32 @@ function PhotoTile({
   src,
   alt,
   className,
+  onOpen,
 }: {
   src: string | null;
   alt: string;
   className?: string;
+  onOpen?: () => void;
 }) {
   return (
     <div
-      className={`relative overflow-hidden rounded-[12px] ${className ?? ""}`}
+      role={src ? "button" : undefined}
+      tabIndex={src ? 0 : undefined}
+      onClick={src ? onOpen : undefined}
+      onKeyDown={
+        src
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onOpen?.();
+              }
+            }
+          : undefined
+      }
+      aria-label={src ? alt : undefined}
+      className={`relative overflow-hidden rounded-[12px] ${
+        src ? "cursor-zoom-in" : ""
+      } ${className ?? ""}`}
     >
       {src ? (
         // eslint-disable-next-line @next/next/no-img-element
@@ -46,12 +65,105 @@ function PhotoTile({
   );
 }
 
+function PhotoLightbox({
+  photos,
+  index,
+  onClose,
+  onNavigate,
+}: {
+  photos: { src: string | null; alt: string }[];
+  index: number;
+  onClose: () => void;
+  onNavigate: (index: number) => void;
+}) {
+  const photo = photos[index];
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") onNavigate((index + 1) % photos.length);
+      if (e.key === "ArrowLeft") onNavigate((index - 1 + photos.length) % photos.length);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    const { overflow } = document.body.style;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = overflow;
+    };
+  }, [index, photos.length, onClose, onNavigate]);
+
+  if (!photo?.src) return null;
+
+  // Rendered via portal, since the root layout's overflow-x-clip wrapper
+  // clips fixed-position descendants that would otherwise escape to the
+  // viewport, instead of just hiding normal-flow overflow.
+  return createPortal(
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 sm:p-8"
+      onClick={onClose}
+    >
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Close"
+        className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-paper transition-colors hover:bg-white/20 sm:right-6 sm:top-6"
+      >
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M1 1l16 16M17 1L1 17" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+        </svg>
+      </button>
+
+      {photos.length > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onNavigate((index - 1 + photos.length) % photos.length);
+            }}
+            aria-label="Previous photo"
+            className="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-paper transition-colors hover:bg-white/20 sm:left-6"
+          >
+            <svg width="10" height="16" viewBox="0 0 10 16" fill="none">
+              <path d="M9 1L1 8l8 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onNavigate((index + 1) % photos.length);
+            }}
+            aria-label="Next photo"
+            className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-paper transition-colors hover:bg-white/20 sm:right-6"
+          >
+            <svg width="10" height="16" viewBox="0 0 10 16" fill="none">
+              <path d="M1 1l8 7-8 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </>
+      )}
+
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={photo.src}
+        alt={photo.alt}
+        onClick={(e) => e.stopPropagation()}
+        className="max-h-full max-w-full rounded-[8px] object-contain"
+      />
+    </div>,
+    document.body,
+  );
+}
+
 export function Teaching() {
   const { flashcards, teaching, teachingPhotos } = useContent();
   const [card, setCard] = useState(0);
   const [dir, setDir] = useState<1 | -1>(1);
   const [flipped, setFlipped] = useState(false);
   const cur = flashcards[card] ?? flashcards[0];
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const next = () => {
     setDir(1);
@@ -190,24 +302,37 @@ export function Teaching() {
             src={teachingPhotos[0].src}
             alt={teachingPhotos[0].alt}
             className="aspect-[4/3] sm:aspect-auto sm:row-span-2 sm:h-full"
+            onOpen={() => setLightboxIndex(0)}
           />
           <PhotoTile
             src={teachingPhotos[1].src}
             alt={teachingPhotos[1].alt}
             className="aspect-[4/3] sm:aspect-auto sm:h-full"
+            onOpen={() => setLightboxIndex(1)}
           />
           <PhotoTile
             src={teachingPhotos[2].src}
             alt={teachingPhotos[2].alt}
             className="aspect-[4/3] sm:aspect-auto sm:h-full"
+            onOpen={() => setLightboxIndex(2)}
           />
           <PhotoTile
             src={teachingPhotos[3].src}
             alt={teachingPhotos[3].alt}
             className="aspect-[4/3] sm:aspect-auto sm:col-start-3 sm:row-span-2 sm:row-start-1 sm:h-full"
+            onOpen={() => setLightboxIndex(3)}
           />
         </div>
       </div>
+
+      {lightboxIndex !== null && (
+        <PhotoLightbox
+          photos={teachingPhotos}
+          index={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onNavigate={setLightboxIndex}
+        />
+      )}
     </section>
   );
 }
