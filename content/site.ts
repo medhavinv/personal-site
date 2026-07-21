@@ -101,10 +101,10 @@ const buildMeta: { id: string; link?: string }[] = [
 // the `src` fields; until then each tile shows the placeholder. Alt text is
 // translated via the locale table.
 const photoMeta: { id: string; src: string | null }[] = [
-  { id: "teach1", src: null },
-  { id: "teach2", src: null },
-  { id: "teach3", src: null },
-  { id: "teach4", src: null },
+  { id: "teach1", src: "/teaching/teach1.jpg" },
+  { id: "teach2", src: "/teaching/teach2.jpg" },
+  { id: "teach3", src: "/teaching/teach3.jpg" },
+  { id: "teach4", src: "/teaching/teach4.jpg" },
 ];
 
 export const contactLinks = {
@@ -466,10 +466,10 @@ const en: Strings = {
     },
   ],
   photoAlts: {
-    teach1: "Teaching at Chulalongkorn University",
-    teach2: "Classroom session",
-    teach3: "Group exercise with students",
-    teach4: "Students at the bootcamp",
+    teach1: "Teaching cloud computing concepts to the class",
+    teach2: "Helping a group of students debug their code",
+    teach3: "Walking through a Python exercise on screen",
+    teach4: "Addressing the full room of bootcamp students",
   },
   projects: {
     kicker: "05 · Things I've built",
@@ -811,10 +811,10 @@ const th: Strings = {
     },
   ],
   photoAlts: {
-    teach1: "การสอนที่จุฬาลงกรณ์มหาวิทยาลัย",
-    teach2: "บรรยากาศในห้องเรียน",
-    teach3: "กิจกรรมกลุ่มกับนักศึกษา",
-    teach4: "นักศึกษาในบูตแคมป์",
+    teach1: "สอนแนวคิด cloud computing ให้กับนักศึกษา",
+    teach2: "ช่วยกลุ่มนักศึกษาแก้โค้ด",
+    teach3: "อธิบายแบบฝึกหัด Python บนหน้าจอ",
+    teach4: "พูดคุยกับนักศึกษาบูตแคมป์ทั้งห้อง",
   },
   projects: {
     kicker: "05 · สิ่งที่ผมสร้าง",
