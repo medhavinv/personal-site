@@ -257,7 +257,7 @@ const en: Strings = {
     sf: {
       name: "San Francisco",
       country: "USA",
-      kicker: "Built platforms",
+      kicker: "Scaled platforms",
       years: "2018 – 2022",
       text: "I was a Senior Technical PM at Lyft and then Asana, leading infrastructure, data platforms, and developer velocity for products used by millions.",
       linkLabel: "See work →",
